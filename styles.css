@@ -137,6 +137,18 @@ button { color: inherit; }
 .support-stack { display: grid; gap: .8rem; }
 .support-card.warning { border-left: 5px solid var(--orange); background: var(--orange-soft); }
 .support-card.decision { border-left: 5px solid var(--green); background: var(--green-soft); }
+.support-card.jde-glance { border-left: 5px solid var(--blue); background: var(--blue-soft); }
+.jde-glance-intro { margin: -.15rem 0 .6rem; }
+.jde-glance-list { display: grid; gap: .5rem; }
+.jde-glance-item { padding: .55rem .6rem; border: 1px solid #c7dbe4; border-radius: 8px; background: rgba(255,255,255,.72); }
+.jde-glance-item > strong { color: var(--navy); font-size: .68rem; }
+.jde-object-line { display: grid; margin-top: .22rem; grid-template-columns: 30px minmax(0,1fr); gap: .35rem; align-items: start; }
+.jde-object-line span { color: var(--blue); font-size: .55rem; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; }
+.jde-object-line code { color: #315866; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: .6rem; line-height: 1.35; overflow-wrap: anywhere; }
+.jde-glance-item p { margin: .3rem 0 0; font-size: .62rem; line-height: 1.4; }
+.jde-glance-link { margin-top: .65rem; padding: 0; color: var(--blue); border: 0; background: transparent; cursor: pointer; font-size: .63rem; font-weight: 800; text-align: left; }
+.jde-glance-link:hover { text-decoration: underline; }
+.jde-glance-link:focus-visible { outline: 3px solid var(--yellow); outline-offset: 4px; border-radius: 2px; }
 .chip-list { display: flex; margin-top: .65rem; flex-wrap: wrap; gap: .35rem; }
 .chip-list span { padding: .38rem .48rem; color: var(--ink); border: 1px solid var(--line); border-radius: 6px; background: var(--cream); font-size: .65rem; }
 .roles-grid, .jde-module-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: .8rem; }
