@@ -1,0 +1,611 @@
+{
+  "version": "1.3.1",
+  "updated": "2026-11-16",
+  "purpose": "Govern every JDE object identifier used by the learning curriculum. Source-backed means present in the supplied project reference set; it does not replace release, ESU, configuration or demo-system validation.",
+  "statuses": {
+    "sourceBacked": "Present in the supplied project reference set.",
+    "needsValidation": "Requires confirmation against the demo system or authoritative documentation."
+  },
+  "references": [
+    {
+      "id": "F0006",
+      "type": "Table / file",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "F0101",
+      "type": "Table / file",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "F0111",
+      "type": "Table / file",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "F03012",
+      "type": "Table / file",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "F03B11",
+      "type": "Table / file",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "F0401",
+      "type": "Table / file",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "F0411",
+      "type": "Table / file",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "F0901",
+      "type": "Table / file",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "F0902",
+      "type": "Table / file",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "F0911",
+      "type": "Table / file",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "F1201",
+      "type": "Table / file",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "F1217",
+      "type": "Table / file",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "F1720",
+      "type": "Table / file",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "F1721",
+      "type": "Table / file",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "F4101",
+      "type": "Table / file",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "F4301",
+      "type": "Table / file",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "F4311",
+      "type": "Table / file",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "F43199",
+      "type": "Table / file",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "F44H002",
+      "type": "Table / file",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "F44H101",
+      "type": "Table / file",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "F44H201",
+      "type": "Table / file",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "F44H201H",
+      "type": "Table / file",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "F44H301",
+      "type": "Table / file",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "F44H401",
+      "type": "Table / file",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "F44H402",
+      "type": "Table / file",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "F44H4101",
+      "type": "Table / file",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "F44H501",
+      "type": "Table / file",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "F44H501H",
+      "type": "Table / file",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "F44H511",
+      "type": "Table / file",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "F44H511H",
+      "type": "Table / file",
+      "status": "needsValidation",
+      "evidence": "Pending demo-system or authoritative-documentation confirmation."
+    },
+    {
+      "id": "F44H590",
+      "type": "Table / file",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "F44H591",
+      "type": "Table / file",
+      "status": "needsValidation",
+      "evidence": "Pending demo-system or authoritative-documentation confirmation."
+    },
+    {
+      "id": "F44H599",
+      "type": "Table / file",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "F44H601",
+      "type": "Table / file",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "F44H602",
+      "type": "Table / file",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "F44H602H",
+      "type": "Table / file",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "F44H603",
+      "type": "Table / file",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "F44H604",
+      "type": "Table / file",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "F44H611",
+      "type": "Table / file",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "F44H711",
+      "type": "Table / file",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "F44H711P",
+      "type": "Table / file",
+      "status": "needsValidation",
+      "evidence": "Pending demo-system or authoritative-documentation confirmation."
+    },
+    {
+      "id": "F44H71W1",
+      "type": "Table / file",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "F44H790",
+      "type": "Table / file",
+      "status": "needsValidation",
+      "evidence": "Pending demo-system or authoritative-documentation confirmation."
+    },
+    {
+      "id": "F4801",
+      "type": "Table / file",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "F4801T",
+      "type": "Table / file",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "F4817",
+      "type": "Table / file",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "F5108",
+      "type": "Table / file",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "P01012",
+      "type": "Application / program",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "P04012",
+      "type": "Application / program",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "P0411",
+      "type": "Application / program",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "P1702",
+      "type": "Application / program",
+      "status": "needsValidation",
+      "evidence": "Pending demo-system or authoritative-documentation confirmation."
+    },
+    {
+      "id": "P1723",
+      "type": "Application / program",
+      "status": "needsValidation",
+      "evidence": "Pending demo-system or authoritative-documentation confirmation."
+    },
+    {
+      "id": "P17500",
+      "type": "Application / program",
+      "status": "needsValidation",
+      "evidence": "Pending demo-system or authoritative-documentation confirmation."
+    },
+    {
+      "id": "P17714",
+      "type": "Application / program",
+      "status": "needsValidation",
+      "evidence": "Pending demo-system or authoritative-documentation confirmation."
+    },
+    {
+      "id": "P4310",
+      "type": "Application / program",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "P4314",
+      "type": "Application / program",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "P44H001",
+      "type": "Application / program",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "P44H002",
+      "type": "Application / program",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "P44H101",
+      "type": "Application / program",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "P44H102",
+      "type": "Application / program",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "P44H200A",
+      "type": "Application / program",
+      "status": "needsValidation",
+      "evidence": "Pending demo-system or authoritative-documentation confirmation."
+    },
+    {
+      "id": "P44H201",
+      "type": "Application / program",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "P44H301",
+      "type": "Application / program",
+      "status": "needsValidation",
+      "evidence": "Pending demo-system or authoritative-documentation confirmation."
+    },
+    {
+      "id": "P44H401",
+      "type": "Application / program",
+      "status": "needsValidation",
+      "evidence": "Pending demo-system or authoritative-documentation confirmation."
+    },
+    {
+      "id": "P44H500",
+      "type": "Application / program",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "P44H501",
+      "type": "Application / program",
+      "status": "needsValidation",
+      "evidence": "Pending demo-system or authoritative-documentation confirmation."
+    },
+    {
+      "id": "P44H590",
+      "type": "Application / program",
+      "status": "needsValidation",
+      "evidence": "Pending demo-system or authoritative-documentation confirmation."
+    },
+    {
+      "id": "P44H591",
+      "type": "Application / program",
+      "status": "needsValidation",
+      "evidence": "Pending demo-system or authoritative-documentation confirmation."
+    },
+    {
+      "id": "P44H600",
+      "type": "Application / program",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "P44H601",
+      "type": "Application / program",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "P44H602",
+      "type": "Application / program",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "P44H603",
+      "type": "Application / program",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "P44H604",
+      "type": "Application / program",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "P44H702",
+      "type": "Application / program",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "P44H703",
+      "type": "Application / program",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "P44H711",
+      "type": "Application / program",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "P44H9903",
+      "type": "Application / program",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "P44H9904",
+      "type": "Application / program",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "P48201",
+      "type": "Application / program",
+      "status": "needsValidation",
+      "evidence": "Pending demo-system or authoritative-documentation confirmation."
+    },
+    {
+      "id": "P51006",
+      "type": "Application / program",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "P512000",
+      "type": "Application / program",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "R44H5000",
+      "type": "Report / batch process",
+      "status": "needsValidation",
+      "evidence": "Pending demo-system or authoritative-documentation confirmation."
+    },
+    {
+      "id": "R44H5003",
+      "type": "Report / batch process",
+      "status": "needsValidation",
+      "evidence": "Pending demo-system or authoritative-documentation confirmation."
+    },
+    {
+      "id": "R44H5004",
+      "type": "Report / batch process",
+      "status": "needsValidation",
+      "evidence": "Pending demo-system or authoritative-documentation confirmation."
+    },
+    {
+      "id": "R44H5005",
+      "type": "Report / batch process",
+      "status": "needsValidation",
+      "evidence": "Pending demo-system or authoritative-documentation confirmation."
+    },
+    {
+      "id": "R44H5006",
+      "type": "Report / batch process",
+      "status": "needsValidation",
+      "evidence": "Pending demo-system or authoritative-documentation confirmation."
+    },
+    {
+      "id": "R44H6001",
+      "type": "Report / batch process",
+      "status": "needsValidation",
+      "evidence": "Pending demo-system or authoritative-documentation confirmation."
+    },
+    {
+      "id": "R44H6002",
+      "type": "Report / batch process",
+      "status": "needsValidation",
+      "evidence": "Pending demo-system or authoritative-documentation confirmation."
+    },
+    {
+      "id": "R44H6003",
+      "type": "Report / batch process",
+      "status": "needsValidation",
+      "evidence": "Pending demo-system or authoritative-documentation confirmation."
+    },
+    {
+      "id": "R44H6004",
+      "type": "Report / batch process",
+      "status": "needsValidation",
+      "evidence": "Pending demo-system or authoritative-documentation confirmation."
+    },
+    {
+      "id": "R44H6006",
+      "type": "Report / batch process",
+      "status": "needsValidation",
+      "evidence": "Pending demo-system or authoritative-documentation confirmation."
+    },
+    {
+      "id": "R44H6007",
+      "type": "Report / batch process",
+      "status": "needsValidation",
+      "evidence": "Pending demo-system or authoritative-documentation confirmation."
+    },
+    {
+      "id": "R44H6009",
+      "type": "Report / batch process",
+      "status": "needsValidation",
+      "evidence": "Pending demo-system or authoritative-documentation confirmation."
+    },
+    {
+      "id": "R44H700",
+      "type": "Report / batch process",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "R44H7003",
+      "type": "Report / batch process",
+      "status": "needsValidation",
+      "evidence": "Pending demo-system or authoritative-documentation confirmation."
+    },
+    {
+      "id": "R44H702",
+      "type": "Report / batch process",
+      "status": "sourceBacked",
+      "evidence": "Present in the supplied project reference set; validate for the installed environment."
+    },
+    {
+      "id": "R44H7113",
+      "type": "Report / batch process",
+      "status": "needsValidation",
+      "evidence": "Pending demo-system or authoritative-documentation confirmation."
+    },
+    {
+      "id": "W44H500K",
+      "type": "Form",
+      "status": "needsValidation",
+      "evidence": "Pending demo-system or authoritative-documentation confirmation."
+    },
+    {
+      "id": "W44H591A",
+      "type": "Form",
+      "status": "needsValidation",
+      "evidence": "Pending demo-system or authoritative-documentation confirmation."
+    },
+    {
+      "id": "W44H591C",
+      "type": "Form",
+      "status": "needsValidation",
+      "evidence": "Pending demo-system or authoritative-documentation confirmation."
+    }
+  ]
+}

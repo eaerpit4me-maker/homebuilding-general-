@@ -22,6 +22,8 @@ Live learning site: https://homebuilding-process-jde-learning.dharmendra-malviya
 - Conceptual budget-to-cost-of-sales money flow with explicitly qualified JA/PA/HA/AA ledger references
 - Per-reference confidence labels: Source-backed, Configuration-dependent and Needs validation
 - Eight-question cumulative assessment with missed-topic guidance
+- Five-question reviewer prompt linked to a structured GitHub issue template
+- Machine-readable JDE reference register and automated curriculum validation
 - Searchable homebuilding glossary
 - Deep links to a stage, lesson view and detail mode
 - Responsive, accessible and dependency-free implementation
@@ -38,6 +40,14 @@ Example deep link:
 
 `http://localhost:4173/?stage=build-home&lesson=jde&mode=practitioner#learningPath`
 
+## Validate the curriculum
+
+```bash
+node scripts/validate-content.mjs
+```
+
+The check validates JSON, stage completeness, quiz answers, unique slugs and HTML IDs, internal links, reference-register coverage, validation flags and source/`dist` synchronization.
+
 ## Publish with GitHub Pages
 
 Because the site has no build dependencies, GitHub Pages can serve the repository root directly. In the repository, open **Settings → Pages**, select **Deploy from a branch**, choose `main` and `/ (root)`, and save.
@@ -48,6 +58,9 @@ Because the site has no build dependencies, GitHub Pages can serve the repositor
 - `styles.css` — responsive learning experience and print design
 - `app.js` — rendering, navigation, assessment and interaction logic
 - `data/content.json` — curriculum, JDE references, reports, role paths, exercises and confidence rules
+- `data/reference-register.json` — governed inventory and validation status for every JDE object ID used in the curriculum
+- `scripts/validate-content.mjs` — content, reference and deployment-consistency checks
+- `.github/ISSUE_TEMPLATE/site-review.md` — five-question reviewer response template
 - `dist/` — deployment-ready copy of the same source and curriculum data
 
 ## Content boundary

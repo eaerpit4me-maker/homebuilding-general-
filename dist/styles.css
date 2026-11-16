@@ -355,8 +355,26 @@ button { color: inherit; }
 .assessment-result p { color: var(--muted); font-size: .7rem; line-height: 1.5; }
 .assessment-result button { color: white; background: var(--navy); }
 .load-error { padding: 1.2rem; border: 1px solid #e3a57a; border-radius: 12px; background: var(--orange-soft); }
+
+.review-banner { display: grid; padding: 5rem 5vw; grid-template-columns: minmax(300px,.75fr) minmax(0,1.25fr); gap: 2rem; color: var(--ink); background: var(--yellow); }
+.review-copy { max-width: 600px; }
+.review-copy .eyebrow { color: #765812; }
+.review-copy h2 { margin: 0; font-family: Georgia, serif; font-size: clamp(2.2rem,4vw,4.2rem); font-weight: 500; letter-spacing: -.04em; line-height: 1.02; }
+.review-copy > p:last-of-type { color: #5d542f; font-size: .78rem; line-height: 1.6; }
+.review-actions { display: flex; margin-top: 1.2rem; align-items: center; flex-wrap: wrap; gap: .8rem; }
+.review-actions a { font-size: .67rem; font-weight: 800; }
+.review-button { padding: .8rem 1rem; color: white; border-radius: 100px; background: var(--navy); text-decoration: none; }
+.review-questions { display: grid; margin: 0; padding: 0; grid-template-columns: repeat(2,1fr); gap: .65rem; list-style: none; }
+.review-questions li { display: grid; min-height: 145px; padding: .85rem; grid-template-columns: 32px 1fr; gap: .2rem .55rem; border: 1px solid rgba(24,49,61,.18); border-radius: 12px; background: rgba(255,255,255,.52); }
+.review-questions li:last-child { grid-column: 1 / -1; min-height: 115px; }
+.review-questions span { display: grid; width: 30px; height: 30px; grid-row: 1 / span 2; place-items: center; color: white; border-radius: 8px; background: var(--green); font-size: .58rem; font-weight: 800; }
+.review-questions strong { color: var(--navy); font-size: .75rem; }
+.review-questions p { margin: .25rem 0 0; color: #5d542f; font-size: .67rem; line-height: 1.45; }
+
 footer { display: flex; padding: 2rem 5vw; justify-content: space-between; gap: 2rem; color: #9bb0b8; background: #102a37; font-size: .67rem; }
 footer p { margin: 0; }
+footer > div { display: grid; gap: .35rem; }
+.footer-change { max-width: 720px; color: #c5d3d8; line-height: 1.45; }
 
 @media (max-width: 1080px) {
   .hero { grid-template-columns: 1fr; }
@@ -388,7 +406,7 @@ footer p { margin: 0; }
   .map-lots { right: -25px; }
   .map-home { right: 70px; }
   .map-note { max-width: 205px; }
-  .orientation, .role-paths, .learning-shell, .jde-guide, .glossary, .journey, .final-assessment { padding: 4rem 1rem; }
+  .orientation, .role-paths, .learning-shell, .jde-guide, .glossary, .journey, .final-assessment, .review-banner { padding: 4rem 1rem; }
   .orientation-cards, .role-path-grid, .roles-grid, .jde-module-grid, .jde-cards, .glossary-grid, .assessment-questions { grid-template-columns: 1fr; }
   .section-heading { display: block; }
   .section-heading > p, .search-box { margin-top: 1rem; }
@@ -413,11 +431,14 @@ footer p { margin: 0; }
   .foundation-grid, .report-groups { grid-template-columns: 1fr; }
   .practitioner-toolkit { margin-top: 3rem; padding-top: 3rem; }
   .toolkit-block { padding: 1rem; }
+  .review-banner { grid-template-columns: 1fr; }
+  .review-questions { grid-template-columns: 1fr; }
+  .review-questions li:last-child { grid-column: auto; }
   footer { flex-direction: column; }
 }
 
 @media print {
-  .site-header, .hero, .orientation, .role-paths, .mode-bar, .stage-rail, .lesson-tabs, .lesson-nav, .journey, .final-assessment, footer { display: none !important; }
+  .site-header, .hero, .orientation, .role-paths, .mode-bar, .stage-rail, .lesson-tabs, .lesson-nav, .journey, .final-assessment, .review-banner, footer { display: none !important; }
   body { background: white; }
   .learning-shell, .jde-guide, .glossary { padding: 0; background: white; }
   .lesson { border: 0; box-shadow: none; }
