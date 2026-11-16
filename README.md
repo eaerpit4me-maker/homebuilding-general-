@@ -4,8 +4,6 @@ Educational proof-of-concept website that teaches the residential homebuilding b
 
 Live learning site: https://homebuilding-process-jde-learning.dharmendra-malviya.chatgpt.site/
 
-This is a separate learning experience. It does not replace the Enterprise Applications Architecture reference site or its repository.
-
 ## Learning design
 
 - Seven plain-language stages from land opportunity through warranty
@@ -14,7 +12,7 @@ This is a separate learning experience. It does not replace the Enterprise Appli
 - Business roles, decisions and common failure points
 - Beginner and JDE Practitioner detail modes
 - Stage-specific knowledge checks with explanations
-- JDE capability orientation and representative technical objects
+- Stage-specific JDE application, report, table and file reference matrices in Practitioner mode
 - Searchable homebuilding glossary
 - Deep links to a stage, lesson view and detail mode
 - Responsive, accessible and dependency-free implementation
