@@ -87,8 +87,8 @@ const stages = [
     input: "Saleable lot, eligible product, price and customer interest", output: "Executed contract or approved spec configuration", consumer: "Lot Start and Construction Planning",
     story: "A buyer discovers Willow Creek in Salesforce and selects Lot 27. Salesforce owns the lead, activities and customer journey, but JDE HBM confirms that the lot can be reserved and holds the accepted ERP sale context. The signed agreement stays in the document/e-signature platform. Deposit receipts are controlled financially. Structural options freeze earlier than cosmetic choices, so every downstream team needs the same configuration version.",
     steps: [["Qualify and match", "Connect buyer needs to available communities, lots, plans and price ranges.", "Salesforce owns lead/opportunity activity; P44H500 reads governed lot and sales context from F44H201/F44H501."], ["Validate and reserve", "Ask the authoritative lot record to accept a time-bound hold; do not rely on CRM availability alone.", "P44H500 Sales Workbench controls the accepted HBM sale status in F44H501 and history in F44H501H."], ["Contract and collect", "Execute the agreement, capture approved economics and process deposits under policy.", "P01012/F0101/F0111 establish buyer identity. Deposit accounting uses configured AR/financial processing; F03B11 holds customer ledger items when used."], ["Configure and freeze", "Capture selected options and enforce structural, design-center and cosmetic cutoff dates.", "P44H501 selects plan/elevation/options; F44H501 holds configuration and F44H511/F44H511H hold option selections/history."]],
-    decisions: ["Buyer sale or spec start?", "Is the lot truly available and eligible?", "Which changes remain allowed after each cutoff?"],
-    pitfalls: ["Two buyers promised the same lot", "CRM price differs from the approved contract", "Stale option revisions flow into construction purchasing"],
+    decisions: ["Buyer sale or spec start?", "Is the lot truly available and eligible?", "Which price components and incentives are approved?", "Which changes remain allowed after each cutoff?"],
+    pitfalls: ["Treating CRM interest as an accepted reservation", "Two buyers promised the same lot", "CRM price differs from the approved contract", "Deposit status is confused with revenue", "Stale option revisions flow into construction purchasing"],
     roles: [["Sales", "Owns the relationship, opportunity and buyer journey."], ["Sales operations", "Owns reservation, contract version, incentives and configuration control."], ["Design center", "Owns buyer selection experience and cutoff workflow."], ["Finance", "Controls deposits, customer identity and approved economic consequences."]],
     handoffs: [["Salesforce", "JDE HBM", "Buyer reference, lot request, hold, contract version, price and options"], ["JDE HBM", "Salesforce", "Accepted availability, reservation, ERP sale reference and milestones"], ["Payment / escrow", "JDE", "Deposit amount, payer, date, tender and external reference"], ["Sales / design", "Lot Start", "Frozen configuration, selected options, effective dates and approved exceptions"]],
     jdeIntro: "Salesforce is normally the engagement system. HBM governs the accepted home-site sale context and configuration used by downstream JDE processing.",
@@ -276,6 +276,30 @@ const stagePractitionerPanels = {
       ]
     }
   ],
+  "sell-configure": [
+    {
+      title: "Read the contract price as a stack",
+      intro: "The buyer sees one contract total, but the business must preserve the components that explain margin, approvals and later changes.",
+      items: [
+        ["Base home", "The approved starting price for the selected plan and community."],
+        ["Lot and elevation premiums", "Location and exterior-design adjustments that should remain separately explainable."],
+        ["Options and upgrades", "Buyer selections with effective sell price, cost effect, tax treatment and cutoff status."],
+        ["Incentives and concessions", "Approved reductions or credits with reason, authority and version history."],
+        ["Deposits", "Cash received or customer-ledger activity applied according to policy; a deposit is not automatically earned revenue."],
+        ["Net contract baseline", "The revision-controlled total accepted for downstream planning, closing and margin analysis."]
+      ]
+    },
+    {
+      title: "Freeze the construction baseline deliberately",
+      intro: "Sales can continue to serve the buyer while construction protects scope. Each cutoff should identify what is frozen, who may approve an exception and which downstream records must be regenerated or changed.",
+      items: [
+        ["Structural cutoff", "Freeze choices that affect engineering, permits, foundation, framing or long-lead commitments before Lot Start."],
+        ["Design-center cutoff", "Freeze coordinated finish packages after compatibility, price and availability validation."],
+        ["Late-change exception", "Require impact review for price, cost, schedule, permit and existing commitment consequences."],
+        ["Accepted version", "Pass one configuration version—with buyer/spec identity, plan, elevation, swing and option lines—to Lot Start."]
+      ]
+    }
+  ],
   "build-home": [
     {
       title: "Lot Start deliverables",
@@ -319,6 +343,15 @@ const stagePractitionerPanels = {
   ]
 };
 
+const salesBusinessSequence = [
+  ["Discover", "Salesforce records interest and buyer activity. No lot is locked."],
+  ["Request", "Sales asks JDE HBM to reserve a specific eligible lot."],
+  ["Accept hold", "HBM accepts or rejects the request and returns an authoritative expiry."],
+  ["Contract", "The parties execute the approved agreement and its price baseline."],
+  ["Configure", "Plan, elevation, premiums, incentives and options are version controlled."],
+  ["Freeze & release", "Cutoffs are complete and one accepted configuration moves to Lot Start."]
+];
+
 const salesforceIntegrationContract = {
   title: "Salesforce–JDE integration contract",
   intro: "The rows below are a recommended architecture pattern—not standard out-of-the-box behavior. Define the authority, trigger, identifiers and response before building the interface.",
@@ -336,7 +369,7 @@ const practiceExercises = {
   "land-opportunity": ["Classify control versus ownership", "Given an option agreement, parcel ID and approval memo, identify which system owns the opportunity, title evidence and posted financial consequence.", "A one-page ownership matrix that does not treat an option as a deed transfer."],
   "land-development": ["Reconcile the development job", "For one horizontal contract, trace original budget, approved change, commitment detail, certified progress, AP and actual cost.", "The remaining commitment and project balance agree to the supporting commercial evidence."],
   "lot-product": ["Explain one configured cost", "Choose one material item and trace item setup, takeoff quantities, bid selection, supplier assignment and effective dates for Lot 27.", "Another practitioner can reproduce both the selected price and accumulated quantity."],
-  "sell-configure": ["Design a safe reservation exchange", "Draft the Salesforce request and JDE response for a 48-hour hold, including correlation ID, expiry, rejection reason and retry rule.", "A duplicate request cannot create two reservations, and CRM never assumes acceptance before JDE responds."],
+  "sell-configure": ["Control a buyer commitment", "Draft the Salesforce request and JDE response for a 48-hour hold, then reconcile base price, premiums, options, incentives and deposit status before naming the configuration version released to Lot Start.", "A duplicate request cannot create two reservations; the contract total is explainable; deposits are not treated as revenue; and downstream teams receive one accepted configuration version."],
   "build-home": ["Clear a Lot Start exception", "Review a Supplier TBD workfile line, determine its owner, resolve or hold it, and choose the evidence required before commitment and voucher creation.", "The line has an approved supplier or explicit hold; later PO and voucher paths remain traceable."],
   "close-transfer": ["Balance the closing package", "Reconcile executed contract, deposits, settlement statement, funded proceeds, transfer proof and the proposed JDE closing journal.", "No draft settlement amount posts, deposits are neither omitted nor duplicated, and legal transfer is evidenced."],
   "warranty": ["Trace a callback to learning", "Follow one defect from homeowner case through coverage, work order or supplier PO, posted cost/recovery and root-cause code.", "The case, home, responsible trade, remedy and financial outcome can be analyzed together."]
@@ -351,6 +384,9 @@ const glossary = [
   ["Community / phase / lot", "The hierarchy that moves from a development, to a delivery phase, to an individual home site."],
   ["Plan / elevation", "The floor plan and exterior architectural style of a home."],
   ["Option", "A buyer- or spec-selected feature that changes price, materials, scope or schedule."],
+  ["Reservation", "A time-bound, accepted hold on a specific lot. Customer interest in CRM is not a reservation until the authoritative lot process accepts it."],
+  ["Configuration baseline", "The approved plan, elevation, swing, options, premiums, incentives and effective version released to downstream planning."],
+  ["Option cutoff", "The last point at which a category of buyer choices may change without a formally approved exception."],
   ["Bid", "Supplier/trade pricing logic used to determine who should perform work and at what agreed cost."],
   ["Takeoff", "The accumulated quantity of materials or assemblies needed for a configured home."],
   ["Lot Start", "The HBM process that converts a home configuration and cost rules into lot-specific workfile lines and commitments."],
@@ -387,6 +423,7 @@ function renderStageRail() {
 }
 
 function understandView(stage) {
+  const businessSequence = stage.slug === "sell-configure" ? `<section class="business-sequence" aria-labelledby="salesSequenceTitle"><header><span>Stage 4 business sequence</span><h4 id="salesSequenceTitle">Interest becomes a construction-ready commitment in six controlled moves.</h4><p>The status changes only when the responsible system accepts the next business fact.</p></header><div>${salesBusinessSequence.map((item,index) => `<article><span>${String(index+1).padStart(2,"0")}</span><strong>${item[0]}</strong><p>${item[1]}</p></article>`).join("")}</div></section>` : "";
   return `<div class="learn-grid">
     <article class="story-card"><h4>The Willow Creek story</h4><p>${stage.story}</p><div class="process-steps">${stage.steps.map((step,index) => `<div class="process-step"><span>${index+1}</span><div><strong>${step[0]}</strong><p>${step[1]}</p>${currentMode === "practitioner" && step[2] ? `<small class="step-jde"><b>JDE touchpoint</b>${step[2]}</small>` : ""}</div></div>`).join("")}</div></article>
     <div class="support-stack">
@@ -394,7 +431,7 @@ function understandView(stage) {
       <article class="support-card warning"><h4>Common failure points</h4><div class="chip-list">${stage.pitfalls.map(item => `<span>${item}</span>`).join("")}</div></article>
       ${currentMode === "practitioner" ? `<article class="support-card jde-glance"><h4>JDE apps &amp; files</h4><p class="jde-glance-intro">Key EnterpriseOne objects and how the business uses them in this stage.</p><div class="jde-glance-list">${stage.jdeReferences.slice(0,3).map(item => `<section class="jde-glance-item"><strong>${item[0]}</strong><div class="jde-object-line"><span>App</span><code>${item[1]}</code></div><div class="jde-object-line"><span>File</span><code>${item[2]}</code></div><p>${item[3]}</p></section>`).join("")}</div><button class="jde-glance-link" type="button" data-open-jde>Open the full stage reference <span aria-hidden="true">→</span></button></article>` : ""}
     </div>
-  </div>`;
+  </div>${businessSequence}`;
 }
 
 function peopleView(stage) {

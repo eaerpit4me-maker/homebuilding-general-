@@ -16,6 +16,7 @@ Live learning site: https://homebuilding-process-jde-learning.dharmendra-malviya
 - HBM foundation controls, lifecycle status model and representative report index
 - Community Pro Forma, material-item setup, bid/takeoff selection logic and Lot Start outputs
 - Salesforce–JDE request/response contract and field-scheduling integration patterns
+- Stage 4 reservation sequence, contract price stack and configuration-freeze controls
 - Workfile exception, voucher-path and guided practitioner exercises for every stage
 - Searchable homebuilding glossary
 - Deep links to a stage, lesson view and detail mode
