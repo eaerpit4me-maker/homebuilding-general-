@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Learn the residential homebuilding process in plain language and see how each stage maps to JD Edwards EnterpriseOne and Homebuilder Management." />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Homebuilding Process Learning · JD Edwards" />
+    <meta property="og:description" content="A guided, interactive learning path from land opportunity to homeowner warranty—with practical JDE mapping at every stage." />
+    <meta property="og:url" content="https://homebuilding-process-jde-learning.dharmendra-malviya.chatgpt.site" />
+    <meta name="twitter:card" content="summary" />
+    <title>Homebuilding Process Learning · JD Edwards</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#learningPath">Skip to the learning path</a>
+
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Homebuilding Process Learning home">
+        <span class="brand-mark" aria-hidden="true">⌂</span>
+        <span><small>Learning Studio</small><strong>Homebuilding + JDE</strong></span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="#learningPath">Learning path</a>
+        <a href="#jdeGuide">JDE guide</a>
+        <a href="#glossary">Glossary</a>
+      </nav>
+      <a class="start-link" href="#learningPath">Start learning <span aria-hidden="true">→</span></a>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="heroTitle">
+        <div class="hero-copy">
+          <p class="eyebrow">Business process first · JDE mapping second</p>
+          <h1 id="heroTitle">Learn how a home moves from <span>land opportunity</span> to <span>homeowner care.</span></h1>
+          <p class="hero-lede">Follow one community and one home through seven practical stages. Understand what the business is trying to accomplish, who does the work, what information moves forward, where money changes state, and how JD Edwards supports the process.</p>
+          <div class="hero-actions">
+            <a class="primary-button" href="#learningPath">Begin with Stage 1</a>
+            <a class="text-link" href="#howToUse">How to use this guide</a>
+          </div>
+          <div class="learning-outcomes" aria-label="Learning outcomes">
+            <div><strong>7</strong><span>business stages</span></div>
+            <div><strong>1</strong><span>home journey</span></div>
+            <div><strong>JDE</strong><span>in business context</span></div>
+          </div>
+        </div>
+        <div class="hero-map" aria-label="Simplified homebuilding process">
+          <div class="map-land"><span>1</span><strong>Find land</strong><small>Opportunity + control</small></div>
+          <div class="map-road" aria-hidden="true"></div>
+          <div class="map-lots">
+            <i></i><i></i><i></i><i></i><i></i><i></i>
+          </div>
+          <div class="map-home" aria-hidden="true"><span></span></div>
+          <div class="map-owner"><span>7</span><strong>Support owner</strong><small>Warranty + learning</small></div>
+          <div class="map-note">One record becomes a community, a lot, a home and finally a long-term customer relationship.</div>
+        </div>
+      </section>
+
+      <section class="orientation" id="howToUse" aria-labelledby="orientationTitle">
+        <div>
+          <p class="eyebrow">How to use this guide</p>
+          <h2 id="orientationTitle">Start with the work. Add JDE when the process makes sense.</h2>
+        </div>
+        <div class="orientation-cards">
+          <article><span>01</span><strong>Understand the stage</strong><p>Learn the outcome, sequence, decisions and common failure points in plain language.</p></article>
+          <article><span>02</span><strong>Follow the handoff</strong><p>See what enters the stage, what must be produced and who accepts it next.</p></article>
+          <article><span>03</span><strong>Map it to JDE</strong><p>Connect the business need to HBM, Job Cost, Procurement, Financials and integrations.</p></article>
+          <article><span>04</span><strong>Check your understanding</strong><p>Answer a short scenario question before moving to the next stage.</p></article>
+        </div>
+        <p class="orientation-note"><strong>Important:</strong> real homebuilding is not perfectly linear. Sales, permitting, design, procurement and construction planning often overlap. The stages give learners a reliable mental model while the handoffs show where coordination is required.</p>
+      </section>
+
+      <section class="learning-shell" id="learningPath" aria-labelledby="learningTitle">
+        <header class="section-heading">
+          <div><p class="eyebrow">Guided learning path</p><h2 id="learningTitle">Follow Willow Creek · Lot 27</h2></div>
+          <p>A fictional example keeps the process concrete. Choose any stage or move through the journey in order.</p>
+        </header>
+
+        <div class="mode-bar">
+          <div><strong>Detail level</strong><span>Technical references appear in Practitioner mode.</span></div>
+          <div class="mode-toggle" role="group" aria-label="Detail level">
+            <button type="button" aria-pressed="true" data-mode="beginner">Business learner</button>
+            <button type="button" aria-pressed="false" data-mode="practitioner">JDE practitioner</button>
+          </div>
+        </div>
+
+        <nav class="stage-rail" id="stageRail" aria-label="Homebuilding learning stages"></nav>
+
+        <article class="lesson" aria-live="polite">
+          <header class="lesson-head">
+            <div>
+              <span class="stage-index" id="stageIndex">Stage 1 of 7</span>
+              <p class="stage-question" id="stageQuestion"></p>
+              <h3 id="stageTitle"></h3>
+              <p id="stageSummary"></p>
+            </div>
+            <aside class="stage-outcome"><span>Stage is complete when…</span><strong id="stageOutcome"></strong></aside>
+          </header>
+
+          <div class="handoff-band" aria-label="Stage handoff">
+            <div><span>Starts with</span><strong id="stageInput"></strong></div>
+            <i aria-hidden="true">→</i>
+            <div><span>Produces</span><strong id="stageOutput"></strong></div>
+            <i aria-hidden="true">→</i>
+            <div class="accept"><span>Accepted by</span><strong id="stageConsumer"></strong></div>
+          </div>
+
+          <div class="lesson-tabs" role="tablist" aria-label="Lesson views">
+            <button type="button" role="tab" aria-selected="true" data-tab="understand">Understand the process</button>
+            <button type="button" role="tab" aria-selected="false" data-tab="people">People &amp; handoffs</button>
+            <button type="button" role="tab" aria-selected="false" data-tab="jde">Map it to JDE</button>
+            <button type="button" role="tab" aria-selected="false" data-tab="check">Knowledge check</button>
+          </div>
+          <div class="lesson-panel" id="lessonPanel" role="tabpanel"></div>
+
+          <footer class="lesson-nav">
+            <button type="button" id="prevStage">← Previous stage</button>
+            <div class="lesson-progress"><span id="progressText">1 of 7</span><i><b id="progressBar"></b></i></div>
+            <button type="button" id="nextStage">Next stage →</button>
+          </footer>
+        </article>
+      </section>
+
+      <section class="journey" aria-labelledby="journeyTitle">
+        <header class="section-heading inverse"><div><p class="eyebrow">The record changes as the work changes</p><h2 id="journeyTitle">What does “Lot 27” become?</h2></div><p>The business object is enriched—not recreated independently in every application.</p></header>
+        <div class="record-journey" id="recordJourney"></div>
+      </section>
+
+      <section class="jde-guide" id="jdeGuide" aria-labelledby="jdeGuideTitle">
+        <header class="section-heading"><div><p class="eyebrow">JDE orientation</p><h2 id="jdeGuideTitle">The JDE building blocks—without the alphabet soup.</h2></div><p>Think of each capability as answering a different business question.</p></header>
+        <div class="jde-cards">
+          <article><span>HBM · 44H</span><h3>What home are we building?</h3><p>Communities, home sites, plans, options, bids, takeoffs, Lot Start and sales context.</p><small>Homebuilder Management</small></article>
+          <article><span>JOB COST · 51</span><h3>What should it cost—and what has it cost?</h3><p>Business units, cost codes, budgets, commitments, actuals and forecast comparison.</p><small>Financial control by community, phase or lot</small></article>
+          <article><span>PROCUREMENT</span><h3>What did we authorize a supplier to do?</h3><p>Purchase orders, subcontracts, changes, receipts, progress and commercial commitments.</p><small>Systems 43 / subcontract capabilities</small></article>
+          <article><span>FINANCIALS</span><h3>What has been posted to the books?</h3><p>AP, AR, cash, General Ledger, WIP, revenue, cost of sales and warranty cost.</p><small>Systems 04, 03B and 09</small></article>
+          <article><span>ADDRESS BOOK</span><h3>Who is the party?</h3><p>Sellers, consultants, trades, suppliers, buyers, brokers and homeowners share governed identities.</p><small>System 01</small></article>
+          <article><span>ORCHESTRATOR / AIS</span><h3>How does JDE exchange information?</h3><p>Validated business actions connect CRM, GIS, field, title, escrow and warranty applications.</p><small>Integration—not a new system of record</small></article>
+        </div>
+      </section>
+
+      <section class="glossary" id="glossary" aria-labelledby="glossaryTitle">
+        <header class="section-heading"><div><p class="eyebrow">Plain-language glossary</p><h2 id="glossaryTitle">Translate builder language into business meaning.</h2></div><label class="search-box">Search terms <input id="glossarySearch" type="search" placeholder="Try lot start, WIP, takeoff…" /></label></header>
+        <div class="glossary-grid" id="glossaryGrid"></div>
+        <p class="empty-state" id="glossaryEmpty" hidden>No matching term. Try a shorter word.</p>
+      </section>
+
+      <section class="next-step">
+        <div><p class="eyebrow">Use both tools together</p><h2>Learn the process here. Use the architecture map when you need implementation depth.</h2></div>
+        <a href="https://jde-homebuilding-lifecycle-map.dharmendra-malviya.chatgpt.site" target="_blank" rel="noopener noreferrer">Open the enterprise architecture reference <span aria-hidden="true">↗</span></a>
+      </section>
+    </main>
+
+    <footer>
+      <p><strong>Homebuilding Process Learning · JD Edwards</strong> · Educational proof of concept · November 2026</p>
+      <p>Conceptual guidance. Validate processes, JDE release/configuration and accounting policy for the actual organization.</p>
+    </footer>
+  </body>
+</html>
