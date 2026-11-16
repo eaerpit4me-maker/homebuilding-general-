@@ -20,6 +20,7 @@ const stages = [
     jdeModules: [["external", "Salesforce + GIS", "Own the land opportunity, activities and spatial evidence."], ["adjacent", "Address Book + Financials", "Create transaction-ready parties and record approved deposits, obligations, payments and cost basis."], ["adjacent", "Job Cost", "Establish the approved business unit, accounts, budget and actual-cost structure."], ["primary", "HBM boundary", "Create authorized community context when appropriate; defer individual home sites until lots exist."]],
     jdeReferences: [
       ["Opportunity and diligence", "Salesforce, GIS, document/title platforms", "External records", "JDE is not the native land-pipeline or parcel-diligence system."],
+      ["Community pro forma", "P44H102", "HBM pro forma data + approved underwriting source", "Use the Community Pro Forma to compare plan mix, premiums, options, land and direct cost after the investment assumptions are approved; it does not replace the detailed land underwriting model."],
       ["Community and job activation", "P44H101 · P51006", "F44H101 · F0006 · F5108 · F0901", "Create only after approval and according to the builder's activation policy."],
       ["Parties and suppliers", "P01012 · P04012", "F0101 · F0111 · F0401", "Create transaction-ready sellers, partners and suppliers."],
       ["Approved financial facts", "P0411 / configured journals and budgets", "F0411 · F0902 · F0911", "Record approved deposits, acquisition cost, liabilities and budget facts."],
@@ -44,6 +45,7 @@ const stages = [
     jdeModules: [["adjacent", "Job Cost", "Controls the WBS, budgets, actuals, balances and cost-to-complete basis."], ["adjacent", "Procurement / Subcontracts", "Controls horizontal commitments, commercial changes and progress."], ["adjacent", "AP + General Accounting", "Posts certified cost, retainage, liabilities, payments and allocation entries."], ["external", "Civil / field / permitting", "Owns drawings, schedules, inspection evidence and municipal workflow."]],
     jdeReferences: [
       ["Community and development job", "P44H101 · P51006", "F44H101 · F0006 · F5108 · F0901", "Connect the community to its Job Cost structure."],
+      ["Community profitability", "P44H102 Community Pro Forma", "HBM pro forma data + governed source assumptions", "Compare plan mix, lot premiums, option revenue, land/development cost and direct construction cost as the phase plan changes."],
       ["Budget and cost inquiry", "P512000", "F0902 · F0911", "Review original/revised budget, commitments, actuals and projected final amounts."],
       ["Horizontal contracts", "P4310", "F4301 · F4311 · F43199", "Control purchase orders, subcontracts, changes and commitment audit detail."],
       ["Progress and payment", "P4314 + AP payment processing", "F0411 · F0911", "Voucher approved progress and retainage according to configuration."],
@@ -69,8 +71,9 @@ const stages = [
     jdeReferences: [
       ["Home site and status", "P44H201 · P44H200A", "F44H201 · F44H201H · F44H002", "Create the lot, manage release/status and review the lot inventory."],
       ["Plan and option masters", "P44H301 · P44H401", "F44H301 · F44H401 · F44H402", "Define plans, elevations, options and packages available to the community."],
+      ["Material-item foundation", "P44H600", "F4101 · F44H4101", "Establish the EnterpriseOne items and homebuilder-specific item attributes required before material takeoffs can create valid purchasing demand."],
       ["Bid contracts", "P44H601", "F44H601 · F44H611", "Select the applicable supplier/trade price rule; bid matching is not cumulative."],
-      ["Takeoffs and item pricing", "P44H602 · P44H603 · P44H604", "F44H602 · F44H602H · F44H603 · F44H604", "Accumulate required quantities, price material items and assign suppliers."],
+      ["Takeoffs and item pricing", "P44H602 · P44H603 · P44H604", "F44H602 · F44H602H · F44H603 · F44H604", "Accumulate all applicable takeoff quantities, price material items and assign suppliers. Configured '+' values can provide less-specific fallback matching."],
       ["Lot job and accounts", "P51006 · P512000", "F0006 · F5108 · F0901 · F0902", "Provide the Job Cost identity, account structure and financial inquiry for the lot."]
     ],
     quiz: { question: "What is the simplest difference between a bid and a takeoff?", options: ["A bid selects price/supplier logic; a takeoff accumulates required quantities", "A bid is for buyers; a takeoff is for title companies", "They are two names for the same record"], answer: 0, explanation: "Bids resolve the applicable trade or supplier price. Takeoffs accumulate material and assembly quantities for the configured home." },
@@ -95,7 +98,7 @@ const stages = [
       ["Configuration and options", "P44H501 Select Options", "F44H511 · F44H511H · F44H401", "Capture selected options and preserve change history for downstream purchasing."],
       ["Buyer identity", "P01012", "F0101 · F0111 · F03012 when AR customer setup is required", "Create the transaction-ready buyer and contacts."],
       ["Deposits and receipts", "Configured Accounts Receivable processing", "F03B11 + related receipt tables", "Apply the builder's accounting policy; HBM does not replace the approved deposit process."],
-      ["CRM and documents", "Salesforce · e-signature · Orchestrator/AIS", "CRM Opportunity ID · contract version · JDE sale reference", "Synchronize accepted status and configuration while signed documents remain in the document platform."]
+      ["CRM and documents", "Salesforce · e-signature · Orchestrator/AIS", "CRM Opportunity ID · contract version · JDE sale reference · correlation ID", "Synchronize accepted status and configuration through explicit request/response contracts while signed documents remain in the document platform."]
     ],
     quiz: { question: "Salesforce shows Lot 27 as available, but JDE HBM rejects the reservation. Which status should govern the accepted hold?", options: ["Salesforce, because the salesperson sees it first", "JDE HBM, because it owns the accepted lot reservation/status", "Whichever screen was refreshed most recently"], answer: 1, explanation: "Salesforce presents inventory and coordinates engagement, but the governed JDE/HBM response should determine whether the hold is accepted." },
     record: ["Configuration and sale", "Buyer/spec decision, plan, options, price, deposits, version and cutoffs"]
@@ -116,11 +119,13 @@ const stages = [
     jdeModules: [["primary", "HBM Lot Start", "Resolves the configuration against bids/takeoffs and creates reviewed lot-specific workfile lines."], ["adjacent", "Procurement / Subcontracts", "Creates and controls supplier commitments, changes, receipts and commercial status."], ["adjacent", "Job Cost / AP / GL", "Compares budget, commitments and actuals and posts lot-level construction WIP."], ["external", "Field scheduling", "Owns detailed trade sequence, mobile collaboration, inspections and photos."]],
     jdeReferences: [
       ["Lot readiness and workbench", "P44H200A · P44H201", "F44H201 · F44H002", "Review the lot, configuration, status and construction activity context."],
-      ["Lot Start generation", "R44H700 · P44H711", "F44H71W1 proof · F44H711 final workfile", "Proof validates without saving final workfile lines; final creates the lot-start workfile."],
+      ["Lot Start generation and review", "R44H700 · P44H711", "F44H71W1 proof · F44H711 final workfile", "Proof validates without saving final lines; final creates the workfile. Resolve Supplier TBD, holds, quantities, cancellations and history before commitment generation."],
+      ["Field package outputs", "R44H7003 Configuration List + configured Notice to Proceed", "Configured report output + JDE lot/document IDs", "Provide the field with the approved home configuration, buyer options and controlled authorization to proceed."],
       ["Commitment generation", "R44H7113 · P4310", "F4301 · F4311 · F43199 · F0902", "Generate purchase orders/subcontracts and expose detail plus configured commitment balances."],
       ["After-start changes", "P44H703", "F44H711P · F44H711", "Stage extra or external purchase-order changes before controlled commitment processing."],
-      ["Actual cost and inquiry", "P4314 · P512000", "F0411 · F0911 · F0902", "Voucher approved work and compare budget, commitments, actuals and projected final cost."],
-      ["Field integration", "Scheduling platform · Orchestrator/AIS · P44H9904 when configured", "JDE document IDs + external event IDs", "Synchronize released work and approved events without making the field tool the financial ledger."]
+      ["Voucher alternatives", "P0411 · P44H702 · R44H702 · P4314", "F0411 · F0911 · F43199", "Choose manual, workbench, batch/auto or receipt-based vouchering according to evidence, approval and configuration—not convenience."],
+      ["Actual cost and inquiry", "P512000", "F0411 · F0911 · F0902", "Compare approved budget, commitment balances, actuals and projected final cost."],
+      ["Field integration", "P44H9903 · P44H9904 · Orchestrator/AIS", "F44H790 · JDE document IDs · external event IDs", "Send governed lot and commitment data to scheduling, and receive approved milestone events without making the field tool the financial ledger."]
     ],
     quiz: { question: "What does commitment generation normally create before a supplier invoice exists?", options: ["A purchase order/subcontract and commitment visibility", "A home-sale closing journal", "A warranty claim"], answer: 0, explanation: "Commitment generation creates procurement documents and commitment visibility. AP and actual cost arise later through approved execution and vouchering." },
     record: ["Active home / construction job", "Workfile, budget, commitments, field milestones, actuals and forecast"]
@@ -176,6 +181,166 @@ const stages = [
     record: ["Homeowner service history", "Case, coverage, work, cost, recovery, defect cause and remedy"]
   }
 ];
+
+const foundationControlItems = [
+  ["P44H001 · Homebuilder constants", "Set company-level HBM behavior and defaults before communities, sales and Lot Start processing begin."],
+  ["P44H002 · Activity rules", "Define permitted sales and construction status transitions, required sequencing and the history expected for each lot."],
+  ["UDCs and document types", "Govern activity codes, trade codes, option/takeoff reasons, order types, statuses and reporting classifications."],
+  ["Job and account templates", "Standardize the business-unit hierarchy, cost codes, cost types, budget ledgers and posting rules copied to communities and lots."],
+  ["Versions and processing options", "Control proof/final behavior, defaults, selection, update paths and batch execution. Treat versions as governed configuration."],
+  ["Security and approvals", "Separate master-data maintenance, exception release, commitment generation, vouchering and closing authority." ]
+];
+
+const statusModel = [
+  ["Available", "Lot and product are approved for customer selection.", "Lot release gate"],
+  ["Reserved", "A time-bound buyer hold has been accepted by the authoritative lot process.", "Reservation expiry / release"],
+  ["Sold", "An executed agreement and governed configuration exist.", "Contract + buyer identity"],
+  ["Under construction", "Start gates passed and the home entered vertical execution.", "Lot Start + start authorization"],
+  ["Complete", "Construction and required inspections are complete; close exceptions are visible.", "Completion / occupancy evidence"],
+  ["Closed", "Legal transfer and approved financial posting are complete.", "Closing worksheet + transfer proof"]
+];
+
+const reportGroups = [
+  {
+    title: "Sales and closing",
+    reports: [
+      ["R44H5000", "Weekly Sales", "Review current sales activity and operational movement."],
+      ["R44H5003", "Backlog", "Monitor contracted homes that have not yet closed."],
+      ["R44H5004", "Projected Closings", "Coordinate expected closings, workload and cash timing."],
+      ["R44H5005", "Cancellations / Transfers", "Review buyer cancellations and lot or contract transfers."],
+      ["R44H5006", "Detail Sales Status", "Inspect detailed home-sale status and supporting attributes."]
+    ]
+  },
+  {
+    title: "Cost and purchasing",
+    reports: [
+      ["R44H6001", "Bid Contract Price Variance", "Find differences between expected and effective bid pricing."],
+      ["R44H6002", "Bid Form / Contract Confirmation", "Support bid review and supplier confirmation."],
+      ["R44H6003", "Base House Cost by Plan", "Compare modeled cost across plans and communities."],
+      ["R44H6004", "Option Cost Analysis", "Review cost impact of options and configuration choices."],
+      ["R44H6006", "Option Cost by Option", "Inspect cost detail for individual options."],
+      ["R44H6007 / R44H6009", "Supplier comparisons", "Compare bid suppliers and review bid content by supplier."]
+    ]
+  },
+  {
+    title: "Lot Start and field package",
+    reports: [
+      ["R44H700", "Lot Start Workfile Generation", "Resolve the approved configuration against effective bids and takeoffs in proof or final mode."],
+      ["R44H7003", "Configuration List", "Produce the field-facing configuration list—often called the garage sticker."],
+      ["R44H7113", "Commitment Generation", "Create controlled purchase orders and subcontracts from reviewed workfile lines."],
+      ["Configured output", "Notice to Proceed", "Issue the approved authorization and scope package using the builder's controlled form and process."]
+    ]
+  }
+];
+
+const stagePractitionerPanels = {
+  "land-opportunity": [
+    {
+      title: "From underwriting to an HBM pro forma",
+      intro: "Keep the detailed land investment model in its governed source. After approval, P44H102 can express the operating assumptions needed to evaluate community profitability inside the homebuilding context.",
+      items: [
+        ["External underwriting", "Parcel strategy, timing, financing, scenario analysis and acquisition conditions remain in the approved modeling source."],
+        ["P44H102 Community Pro Forma", "Compare plan mix, lot premiums, option revenue, direct construction cost and land/development assumptions."],
+        ["Controlled handoff", "Carry the approved model version, assumptions, approval reference and effective date so Finance can reconcile later changes."]
+      ]
+    }
+  ],
+  "land-development": [
+    {
+      title: "Refresh profitability before phase release",
+      intro: "Horizontal cost, lot yield and product mix change during development. The release decision should compare the current governed assumptions—not the original deal model alone.",
+      items: [
+        ["Update", "Approved lot yield, lot mix, developed-lot basis, premiums and revised direct-cost assumptions."],
+        ["Compare", "Current community pro forma against the investment baseline and Job Cost commitments/actuals."],
+        ["Decide", "Release, re-phase, re-price or hold—with the decision and model version retained as evidence."]
+      ]
+    }
+  ],
+  "lot-product": [
+    {
+      title: "Build the material-item foundation first",
+      intro: "A takeoff cannot create reliable demand if its material items are not governed. Establish the item and its homebuilder attributes before quantity rules are authored.",
+      items: [
+        ["1 · EnterpriseOne item", "P44H600 works with F4101 item identity and the F44H4101 homebuilder-specific extension."],
+        ["2 · Purchasing attributes", "Confirm branch/plant, unit of measure, supplier strategy, cost and effective dates required by the implementation."],
+        ["3 · Takeoff use", "Reference governed items in cumulative plan, elevation and option quantity rules; do not hide new items inside free-text descriptions."]
+      ]
+    },
+    {
+      title: "How selection logic resolves",
+      intro: "Bids and takeoffs solve different problems. The configuration may use less-specific '+' values as controlled fallbacks, but effective dates and precedence must still produce an explainable result.",
+      items: [
+        ["Bid selection", "Search from the most specific eligible combination toward a broader configured fallback and select the applicable supplier/trade price."],
+        ["Takeoff accumulation", "Accumulate every applicable quantity row across base plan, elevation, structural choice and selected option."],
+        ["Control test", "For one test lot, document why the winning bid was selected and how every material quantity was accumulated."]
+      ]
+    }
+  ],
+  "build-home": [
+    {
+      title: "Lot Start deliverables",
+      intro: "Commitments are only one output. The field also needs a controlled description of what to build and evidence that the work is authorized.",
+      items: [
+        ["Configuration List · R44H7003", "Field-facing plan, elevation and approved buyer-option detail—the commonly named garage sticker."],
+        ["Notice to Proceed", "Configured authorization that communicates scope, timing and commercial permission to the trade."],
+        ["PO / subcontract package", "F4301/F4311 commitments with supplier, lot job, scope, quantity, dates and price traceable to the workfile."]
+      ]
+    },
+    {
+      title: "Workfile exception controls",
+      intro: "P44H711 is an exception-control step, not a ceremonial review. Resolve the conditions below before R44H7113 creates legal commitments.",
+      items: [
+        ["Supplier TBD", "Assign the approved supplier or hold the line; never allow a placeholder to become an unowned field obligation."],
+        ["Hold / release", "Retain an explicit reason, owner and release condition for lines blocked by design, permit, price or scope uncertainty."],
+        ["Quantity revision", "Capture the approved reason and verify that the revised quantity still agrees with the configured home."],
+        ["Cancel / history", "Cancel superseded work in a way that preserves the audit trail and correctly relieves or replaces related commitments."]
+      ]
+    },
+    {
+      title: "Choose the voucher path by evidence",
+      intro: "The correct path depends on how completion is approved, how the supplier invoices and what control the builder requires.",
+      items: [
+        ["P0411 · Standard voucher", "Use for controlled AP entry when invoice evidence and account distribution are approved outside an automated HBM path."],
+        ["P44H702 · Voucher Workbench", "Review eligible HBM purchasing activity and resolve exceptions before voucher creation."],
+        ["R44H702 · Auto Voucher", "Create vouchers in batch only when milestone, supplier, log, amount and approval controls are reliable."],
+        ["P4314 · Voucher Match", "Match invoice or approved progress against the procurement document where the configured receipt/progress process requires it."]
+      ]
+    },
+    {
+      title: "Field scheduling integration",
+      intro: "JDE remains authoritative for governed lots and commercial commitments. The scheduling platform owns detailed trade sequence and field collaboration.",
+      items: [
+        ["P44H9903 · Lot outbound", "Publish the governed lot, configuration and status context required by the field platform."],
+        ["P44H9904 · Commitment outbound", "Publish released purchase-order/subcontract content and revisions with stable JDE document keys."],
+        ["F44H790 · Third-party milestones", "Receive and map approved external milestone activity so HBM can update governed status and trigger configured follow-on controls."],
+        ["Control envelope", "Use correlation IDs, idempotency, acknowledgements, retry/error queues and reconciliation so no event silently disappears or posts twice."]
+      ]
+    }
+  ]
+};
+
+const salesforceIntegrationContract = {
+  title: "Salesforce–JDE integration contract",
+  intro: "The rows below are a recommended architecture pattern—not standard out-of-the-box behavior. Define the authority, trigger, identifiers and response before building the interface.",
+  headers: ["Flow", "Trigger", "Authoritative owner", "Minimum contract", "Required response / control"],
+  rows: [
+    ["JDE → Salesforce inventory", "Lot or product availability changes", "JDE HBM for accepted operational status", "Community, lot, product eligibility, price/effective date, JDE version", "Upsert acknowledgement; stale-version rejection; reconciliation count"],
+    ["Salesforce → JDE reservation", "Sales user requests a hold", "JDE HBM decides acceptance", "CRM opportunity/buyer, lot, requested expiry, user, correlation ID", "Accepted/rejected response with JDE sale reference, reason and authoritative expiry"],
+    ["JDE → Salesforce reservation result", "HBM accepts, releases or expires a hold", "JDE HBM", "JDE sale reference, lot, status, effective timestamp, correlation ID", "CRM confirmation; exception queue if the matching opportunity is missing"],
+    ["Salesforce / design → JDE contract", "Executed agreement or approved selection revision", "Signed document platform for evidence; HBM for accepted configuration", "Buyer, contract version, plan/elevation/options, premiums, incentives, cutoffs", "Validation result with rejected lines and accepted configuration version"],
+    ["JDE → Salesforce financial milestone", "Deposit posted or home closed", "JDE Financials for posted fact", "Amount/status only as needed, JDE document, posting date, close milestone", "CRM acknowledgement; no autonomous change to the posted accounting fact"]
+  ]
+};
+
+const practiceExercises = {
+  "land-opportunity": ["Classify control versus ownership", "Given an option agreement, parcel ID and approval memo, identify which system owns the opportunity, title evidence and posted financial consequence.", "A one-page ownership matrix that does not treat an option as a deed transfer."],
+  "land-development": ["Reconcile the development job", "For one horizontal contract, trace original budget, approved change, commitment detail, certified progress, AP and actual cost.", "The remaining commitment and project balance agree to the supporting commercial evidence."],
+  "lot-product": ["Explain one configured cost", "Choose one material item and trace item setup, takeoff quantities, bid selection, supplier assignment and effective dates for Lot 27.", "Another practitioner can reproduce both the selected price and accumulated quantity."],
+  "sell-configure": ["Design a safe reservation exchange", "Draft the Salesforce request and JDE response for a 48-hour hold, including correlation ID, expiry, rejection reason and retry rule.", "A duplicate request cannot create two reservations, and CRM never assumes acceptance before JDE responds."],
+  "build-home": ["Clear a Lot Start exception", "Review a Supplier TBD workfile line, determine its owner, resolve or hold it, and choose the evidence required before commitment and voucher creation.", "The line has an approved supplier or explicit hold; later PO and voucher paths remain traceable."],
+  "close-transfer": ["Balance the closing package", "Reconcile executed contract, deposits, settlement statement, funded proceeds, transfer proof and the proposed JDE closing journal.", "No draft settlement amount posts, deposits are neither omitted nor duplicated, and legal transfer is evidenced."],
+  "warranty": ["Trace a callback to learning", "Follow one defect from homeowner case through coverage, work order or supplier PO, posted cost/recovery and root-cause code.", "The case, home, responsible trade, remedy and financial outcome can be analyzed together."]
+};
 
 const glossary = [
   ["Acquisition", "The process of identifying, controlling, approving and obtaining rights to land or finished lots."],
@@ -237,12 +402,23 @@ function peopleView(stage) {
     <div class="handoff-table" role="table" aria-label="Stage information handoffs"><div class="handoff-row handoff-head" role="row"><span role="columnheader">From</span><span role="columnheader">To</span><span role="columnheader">What moves</span></div>${stage.handoffs.map(item => `<div class="handoff-row" role="row"><strong role="rowheader">${item[0]}</strong><span role="cell">${item[1]}</span><span role="cell">${item[2]}</span></div>`).join("")}</div>`;
 }
 
+function practitionerStageView(stage) {
+  if (currentMode !== "practitioner") return "";
+  const panels = stagePractitionerPanels[stage.slug] || [];
+  const panelMarkup = panels.map((section,index) => `<section class="practitioner-panel"><header><span>Practitioner deep dive ${String(index+1).padStart(2,"0")}</span><h4>${section.title}</h4><p>${section.intro}</p></header><div class="deep-dive-grid">${section.items.map(item => `<article><strong>${item[0]}</strong><p>${item[1]}</p></article>`).join("")}</div></section>`).join("");
+  const contractMarkup = stage.slug === "sell-configure" ? `<section class="practitioner-panel integration-panel"><header><span>Integration design</span><h4>${salesforceIntegrationContract.title}</h4><p>${salesforceIntegrationContract.intro}</p></header><div class="integration-table" role="table" aria-label="Salesforce and JDE integration contract"><div class="integration-row integration-head" role="row">${salesforceIntegrationContract.headers.map(header => `<span role="columnheader">${header}</span>`).join("")}</div>${salesforceIntegrationContract.rows.map(row => `<div class="integration-row" role="row">${row.map((cell,index) => index === 0 ? `<strong role="rowheader">${cell}</strong>` : `<span role="cell">${cell}</span>`).join("")}</div>`).join("")}</div></section>` : "";
+  if (!panelMarkup && !contractMarkup) return "";
+  return `<div class="practitioner-stage-detail">${contractMarkup}${panelMarkup}</div>`;
+}
+
 function jdeView(stage) {
-  return `<div class="jde-intro"><strong>JDE in this stage</strong><p>${stage.jdeIntro}</p></div><div class="jde-module-grid">${stage.jdeModules.map(item => `<article class="jde-module-card ${item[0]}"><span>${item[0] === "primary" ? "JDE HBM" : item[0] === "adjacent" ? "Adjacent JDE" : "Specialist / integration"}</span><h4>${item[1]}</h4><p>${item[2]}</p></article>`).join("")}</div><section class="technical-reference" ${currentMode === "practitioner" ? "" : "hidden"}><div class="reference-heading"><div><strong>JDE application and file reference</strong><p>Representative EnterpriseOne 9.2 objects. Validate ESUs, processing options, licensing and local configuration.</p></div><a href="https://docs.oracle.com/en/applications/jd-edwards/project-management/9.2/eoahm/toc.htm" target="_blank" rel="noopener noreferrer">Oracle HBM guide <span aria-hidden="true">↗</span></a></div><div class="reference-table" role="table" aria-label="JDE applications, programs and tables for this stage"><div class="reference-row reference-head" role="row"><span role="columnheader">Capability</span><span role="columnheader">Applications / reports</span><span role="columnheader">Tables / files</span><span role="columnheader">How it supports the process</span></div>${stage.jdeReferences.map(item => `<div class="reference-row" role="row"><strong role="rowheader">${item[0]}</strong><span role="cell"><code>${item[1]}</code></span><span role="cell"><code>${item[2]}</code></span><span role="cell">${item[3]}</span></div>`).join("")}</div></section>`;
+  return `<div class="jde-intro"><strong>JDE in this stage</strong><p>${stage.jdeIntro}</p></div><div class="jde-module-grid">${stage.jdeModules.map(item => `<article class="jde-module-card ${item[0]}"><span>${item[0] === "primary" ? "JDE HBM" : item[0] === "adjacent" ? "Adjacent JDE" : "Specialist / integration"}</span><h4>${item[1]}</h4><p>${item[2]}</p></article>`).join("")}</div><section class="technical-reference" ${currentMode === "practitioner" ? "" : "hidden"}><div class="reference-heading"><div><strong>JDE application and file reference</strong><p>Representative EnterpriseOne 9.2 objects. Validate ESUs, processing options, licensing and local configuration.</p></div><a href="https://docs.oracle.com/en/applications/jd-edwards/project-management/9.2/eoahm/toc.htm" target="_blank" rel="noopener noreferrer">Oracle HBM guide <span aria-hidden="true">↗</span></a></div><div class="reference-table" role="table" aria-label="JDE applications, programs and tables for this stage"><div class="reference-row reference-head" role="row"><span role="columnheader">Capability</span><span role="columnheader">Applications / reports</span><span role="columnheader">Tables / files</span><span role="columnheader">How it supports the process</span></div>${stage.jdeReferences.map(item => `<div class="reference-row" role="row"><strong role="rowheader">${item[0]}</strong><span role="cell"><code>${item[1]}</code></span><span role="cell"><code>${item[2]}</code></span><span role="cell">${item[3]}</span></div>`).join("")}</div></section>${practitionerStageView(stage)}`;
 }
 
 function checkView(stage) {
-  return `<article class="check-card"><span class="stage-index">Stage ${currentStage+1} knowledge check</span><h4>${stage.quiz.question}</h4><p>Choose the strongest answer. The explanation connects the business rule to the system boundary.</p><div class="answer-list">${stage.quiz.options.map((option,index) => `<button type="button" data-answer="${index}">${String.fromCharCode(65+index)}. ${option}</button>`).join("")}</div><div class="answer-feedback" id="answerFeedback" hidden aria-live="polite"></div></article>`;
+  const exercise = practiceExercises[stage.slug];
+  const practiceMarkup = currentMode === "practitioner" && exercise ? `<article class="practice-card"><span>Guided practitioner exercise</span><h4>${exercise[0]}</h4><dl><div><dt>Task</dt><dd>${exercise[1]}</dd></div><div><dt>Evidence of understanding</dt><dd>${exercise[2]}</dd></div></dl></article>` : "";
+  return `<div class="check-layout"><article class="check-card"><span class="stage-index">Stage ${currentStage+1} knowledge check</span><h4>${stage.quiz.question}</h4><p>Choose the strongest answer. The explanation connects the business rule to the system boundary.</p><div class="answer-list">${stage.quiz.options.map((option,index) => `<button type="button" data-answer="${index}">${String.fromCharCode(65+index)}. ${option}</button>`).join("")}</div><div class="answer-feedback" id="answerFeedback" hidden aria-live="polite"></div></article>${practiceMarkup}</div>`;
 }
 
 function renderPanel() {
@@ -253,6 +429,16 @@ function renderPanel() {
 
 function renderRecordJourney() {
   document.getElementById("recordJourney").innerHTML = stages.map((stage,index) => `<div class="record-node ${index === currentStage ? "active" : ""}"><span>${String(index+1).padStart(2,"0")} · ${stage.phase}</span><strong>${stage.record[0]}</strong><small>${stage.record[1]}</small></div>`).join("");
+}
+
+function renderPractitionerToolkit() {
+  document.getElementById("foundationControls").innerHTML = foundationControlItems.map((item,index) => `<article><span>${String(index+1).padStart(2,"0")}</span><div><strong>${item[0]}</strong><p>${item[1]}</p></div></article>`).join("");
+  document.getElementById("statusFlow").innerHTML = statusModel.map((item,index) => `<article><span>${String(index+1).padStart(2,"0")}</span><strong>${item[0]}</strong><p>${item[1]}</p><small>${item[2]}</small></article>`).join("");
+  document.getElementById("reportGroups").innerHTML = reportGroups.map(group => `<article class="report-group"><h5>${group.title}</h5><div>${group.reports.map(report => `<section><code>${report[0]}</code><strong>${report[1]}</strong><p>${report[2]}</p></section>`).join("")}</div></article>`).join("");
+}
+
+function syncModeVisibility() {
+  document.querySelectorAll("[data-practitioner-only]").forEach(element => { element.hidden = currentMode !== "practitioner"; });
 }
 
 function selectStage(index, updateLink = true) {
@@ -286,7 +472,7 @@ function setMode(mode) {
   if (!["beginner","practitioner"].includes(mode)) return;
   currentMode = mode;
   modeButtons.forEach(button => button.setAttribute("aria-pressed", String(button.dataset.mode === mode)));
-  renderPanel(); updateUrl();
+  renderPanel(); syncModeVisibility(); updateUrl();
 }
 
 stageRail.addEventListener("click", event => { const button = event.target.closest("[data-stage]"); if (button) selectStage(Number(button.dataset.stage)); });
@@ -329,5 +515,7 @@ currentTab = ["understand","people","jde","check"].includes(requestedTab) ? requ
 currentMode = ["beginner","practitioner"].includes(requestedMode) ? requestedMode : "beginner";
 tabButtons.forEach(button => { const selected = button.dataset.tab === currentTab; button.setAttribute("aria-selected", String(selected)); button.tabIndex = selected ? 0 : -1; });
 modeButtons.forEach(button => button.setAttribute("aria-pressed", String(button.dataset.mode === currentMode)));
+renderPractitionerToolkit();
+syncModeVisibility();
 selectStage(currentStage, false);
 renderGlossary();

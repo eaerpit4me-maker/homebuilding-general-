@@ -13,6 +13,10 @@ Live learning site: https://homebuilding-process-jde-learning.dharmendra-malviya
 - Beginner and JDE Practitioner detail modes
 - Stage-specific knowledge checks with explanations
 - Stage-specific JDE application, report, table and file reference matrices in Practitioner mode
+- HBM foundation controls, lifecycle status model and representative report index
+- Community Pro Forma, material-item setup, bid/takeoff selection logic and Lot Start outputs
+- Salesforce–JDE request/response contract and field-scheduling integration patterns
+- Workfile exception, voucher-path and guided practitioner exercises for every stage
 - Searchable homebuilding glossary
 - Deep links to a stage, lesson view and detail mode
 - Responsive, accessible and dependency-free implementation
