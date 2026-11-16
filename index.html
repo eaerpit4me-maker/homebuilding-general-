@@ -22,9 +22,11 @@
         <span><small>Learning Studio</small><strong>Homebuilding + JDE</strong></span>
       </a>
       <nav aria-label="Primary navigation">
+        <a href="#rolePaths">Choose a role</a>
         <a href="#learningPath">Learning path</a>
         <a href="#jdeGuide">JDE guide</a>
         <a href="#glossary">Glossary</a>
+        <a href="#finalAssessment">Final check</a>
       </nav>
       <a class="start-link" href="#learningPath">Start learning <span aria-hidden="true">→</span></a>
     </header>
@@ -55,6 +57,14 @@
           <div class="map-owner"><span>7</span><strong>Support owner</strong><small>Warranty + learning</small></div>
           <div class="map-note">One record becomes a community, a lot, a home and finally a long-term customer relationship.</div>
         </div>
+      </section>
+
+      <section class="role-paths" id="rolePaths" aria-labelledby="rolePathsTitle">
+        <header class="section-heading">
+          <div><p class="eyebrow">Choose your route</p><h2 id="rolePathsTitle">Follow the process through your role.</h2></div>
+          <p>Each route starts at the stage where that team first needs the shared business record. You can still explore the full lifecycle at any time.</p>
+        </header>
+        <div class="role-path-grid" id="rolePathGrid"></div>
       </section>
 
       <section class="orientation" id="howToUse" aria-labelledby="orientationTitle">
@@ -158,6 +168,12 @@
             <div class="toolkit-copy"><span>03 · Operate by exception</span><h4 id="reportsTitle">Representative HBM report index</h4><p>Use reports to identify exceptions and reconcile activity. Report availability, versions and processing options must be validated for the installed release.</p></div>
             <div class="report-groups" id="reportGroups"></div>
           </section>
+
+          <section class="toolkit-block" aria-labelledby="moneyFlowTitle">
+            <div class="toolkit-copy"><span>04 · Follow the money</span><h4 id="moneyFlowTitle">From approved budget to cost of sales</h4><p>This is a conceptual teaching view. Ledger labels and exact posting rules must be confirmed for the installed release, local setup and accounting policy.</p></div>
+            <div class="money-flow" id="moneyFlow"></div>
+            <aside class="ledger-note"><strong>Ledger reading guide</strong><span><b>JA</b> budget candidate</span><span><b>PA / HA</b> commitment candidates</span><span><b>AA</b> posted actuals</span><em>Candidate labels remain explicitly marked until validated in the demo environment.</em></aside>
+          </section>
         </section>
       </section>
 
@@ -167,10 +183,18 @@
         <p class="empty-state" id="glossaryEmpty" hidden>No matching term. Try a shorter word.</p>
       </section>
 
+      <section class="final-assessment" id="finalAssessment" aria-labelledby="assessmentTitle">
+        <header class="section-heading inverse">
+          <div><p class="eyebrow">Cumulative assessment</p><h2 id="assessmentTitle">Can you connect the business process to the system boundary?</h2></div>
+          <p>Answer eight scenario questions. A result of 6/8 or better shows a sound working model; missed topics point you back to the relevant lesson.</p>
+        </header>
+        <div class="assessment-card" id="assessmentCard"></div>
+      </section>
+
     </main>
 
     <footer>
-      <p><strong>Homebuilding Process Learning · JD Edwards</strong> · Curriculum v1.2 · November 2026</p>
+      <p><strong>Homebuilding Process Learning · JD Edwards</strong> · Curriculum v1.3 · November 2026</p>
       <p>Conceptual guidance. Validate processes, JDE release/configuration and accounting policy for the actual organization.</p>
     </footer>
   </body>

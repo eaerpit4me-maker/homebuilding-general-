@@ -1,0 +1,1880 @@
+{
+  "stages": [
+    {
+      "slug": "land-opportunity",
+      "short": "Find land",
+      "phase": "Portfolio decision",
+      "title": "Find and control the land",
+      "question": "Where could we build—and should we pursue it?",
+      "summary": "The land team identifies a parcel or finished-lot opportunity, secures a form of site control, tests feasibility and obtains authority to close, retain control or walk away.",
+      "outcome": "The company has documented ownership or contractual control, an approved investment case, known conditions and an accountable Development owner.",
+      "input": "Seller or broker lead, parcel reference and market idea",
+      "output": "Approved, owned or controlled land opportunity",
+      "consumer": "Land Development",
+      "story": "Willow Creek begins as a Salesforce land opportunity linked to GIS parcels. The team negotiates an option, investigates title, utilities, environmental conditions and market demand, and updates an underwriting model. An investment committee approves the structure and conditions. Title may transfer now, later at option exercise, or by phased takedown—so commercial control, legal ownership and accounting treatment are tracked separately.",
+      "steps": [
+        [
+          "Create the opportunity",
+          "Identify the seller, broker, parcel, geography, asking terms and initial strategy.",
+          "External: Salesforce land opportunity + GIS parcel ID. No standard HBM opportunity record."
+        ],
+        [
+          "Secure site control",
+          "Execute an option, purchase agreement, takedown, JV or land-bank agreement with clear dates and conditions.",
+          "External: contract repository and title data. Keep legal title separate from commercial control."
+        ],
+        [
+          "Complete diligence",
+          "Evaluate title, survey, environmental, geotechnical, entitlement, utilities, market and delivery risk.",
+          "External diligence tools; only approved commercial and accounting consequences move into JDE."
+        ],
+        [
+          "Approve and activate",
+          "Approve the investment and accounting conclusion, complete settlement when applicable, establish JDE controls and hand off the baseline.",
+          "P01012/F0101 parties; P44H101/F44H101 community when authorized; P51006/F0006/F5108/F0901 job structure."
+        ]
+      ],
+      "decisions": [
+        "Pursue, renegotiate or walk away",
+        "Buy now, option, takedown, JV or land-bank structure",
+        "Which conditions must remain open after approval?"
+      ],
+      "pitfalls": [
+        "Treating an option as if title already transferred",
+        "Creating JDE lots before a recorded plat or accepted finished-lot purchase",
+        "Allowing the approved underwriting version and JDE budget to diverge"
+      ],
+      "roles": [
+        [
+          "Land acquisition",
+          "Owns the opportunity, negotiation and decision package."
+        ],
+        [
+          "Legal / title",
+          "Confirms rights, exceptions, settlement and recorded ownership."
+        ],
+        [
+          "Finance",
+          "Approves funding, classification, capitalization and project activation."
+        ],
+        [
+          "Development",
+          "Accepts the baseline, conditions and next-stage accountability."
+        ]
+      ],
+      "handoffs": [
+        [
+          "Salesforce / GIS",
+          "Diligence team",
+          "Deal, parcel, parties, control strategy and dates"
+        ],
+        [
+          "Approval workflow",
+          "Title / JDE",
+          "Approved structure, model version, legal entity, limits and conditions"
+        ],
+        [
+          "Title / registry",
+          "JDE + Salesforce",
+          "Settlement, funding, deed/recording status and legal owner"
+        ],
+        [
+          "Acquisition",
+          "Land Development",
+          "Controlled/owned land, baseline budget, open conditions and evidence"
+        ]
+      ],
+      "jdeIntro": "JDE records the approved commercial and financial consequences. It is not the parcel, title, diligence or early-stage underwriting system.",
+      "jdeModules": [
+        [
+          "external",
+          "Salesforce + GIS",
+          "Own the land opportunity, activities and spatial evidence."
+        ],
+        [
+          "adjacent",
+          "Address Book + Financials",
+          "Create transaction-ready parties and record approved deposits, obligations, payments and cost basis."
+        ],
+        [
+          "adjacent",
+          "Job Cost",
+          "Establish the approved business unit, accounts, budget and actual-cost structure."
+        ],
+        [
+          "primary",
+          "HBM boundary",
+          "Create authorized community context when appropriate; defer individual home sites until lots exist."
+        ]
+      ],
+      "jdeReferences": [
+        [
+          "Opportunity and diligence",
+          "Salesforce, GIS, document/title platforms",
+          "External records",
+          "JDE is not the native land-pipeline or parcel-diligence system."
+        ],
+        [
+          "Community pro forma",
+          "P44H102",
+          "HBM pro forma data + approved underwriting source",
+          "Use the Community Pro Forma to compare plan mix, premiums, options, land and direct cost after the investment assumptions are approved; it does not replace the detailed land underwriting model."
+        ],
+        [
+          "Community and job activation",
+          "P44H101 · P51006",
+          "F44H101 · F0006 · F5108 · F0901",
+          "Create only after approval and according to the builder's activation policy."
+        ],
+        [
+          "Parties and suppliers",
+          "P01012 · P04012",
+          "F0101 · F0111 · F0401",
+          "Create transaction-ready sellers, partners and suppliers."
+        ],
+        [
+          "Approved financial facts",
+          "P0411 / configured journals and budgets",
+          "F0411 · F0902 · F0911",
+          "Record approved deposits, acquisition cost, liabilities and budget facts."
+        ],
+        [
+          "Integration",
+          "Orchestrator / AIS",
+          "External correlation IDs",
+          "Move approved facts and status; retain source evidence outside JDE."
+        ]
+      ],
+      "quiz": {
+        "question": "Willow Creek is under an executed land option, but the deed has not transferred. Which statement is most accurate?",
+        "options": [
+          "The builder legally owns the land",
+          "The builder controls a contractual right, while recorded ownership remains with the current owner",
+          "JDE must create all future home-site records immediately"
+        ],
+        "answer": 1,
+        "explanation": "An option can provide contractual control without transferring recorded title. Accounting recognition and operational readiness are separate decisions."
+      },
+      "record": [
+        "Land opportunity",
+        "Deal ID, Parcel ID, control agreement, approved model and conditions"
+      ]
+    },
+    {
+      "slug": "land-development",
+      "short": "Develop land",
+      "phase": "Horizontal delivery",
+      "title": "Entitle and develop the community",
+      "question": "How does raw land become serviced, buildable lots?",
+      "summary": "The Development team secures approvals and installs horizontal infrastructure—earthwork, roads, water, sewer, power, drainage, landscaping and common facilities—while controlling contracts and cost.",
+      "outcome": "The relevant phase is legally recorded, physically serviced, accepted where required and ready to release governed lots.",
+      "input": "Owned or controlled land, approved baseline and open conditions",
+      "output": "Recorded, serviced and financially controlled phase",
+      "consumer": "Community and Lot Setup",
+      "story": "Willow Creek moves from an investment decision to a delivery program. Civil engineers design the subdivision, municipalities review it, and suppliers perform horizontal work. Development managers need one view of original budget, approved changes, commitments, certified progress, actual cost and remaining forecast. Shared phase cost will later become part of each lot's cost basis.",
+      "steps": [
+        [
+          "Design and entitle",
+          "Complete civil design, permits, agreements, subdivision/plat approval and utility coordination.",
+          "External permitting/CAD records; P44H101/F44H101 and P51006/F0006/F5108 hold the approved community/job context."
+        ],
+        [
+          "Contract the work",
+          "Tender and award horizontal scopes using approved suppliers, cost codes and commercial terms.",
+          "P4310 creates purchase orders/subcontracts in F4301/F4311 against the development job and cost-code structure."
+        ],
+        [
+          "Execute and certify",
+          "Track field progress, inspections, change orders, retainage, invoices and municipal acceptance.",
+          "P4314 and configured AP processing update F0411/F0911; commitment detail and relief are traceable through F43199."
+        ],
+        [
+          "Complete and allocate",
+          "Close the eligible cost pool and allocate approved acquisition/development basis to released lots.",
+          "P512000 reviews F0902 balances and F0911 detail; configured journals allocate eligible cost to released lot jobs."
+        ]
+      ],
+      "decisions": [
+        "Which phase is released and when?",
+        "What work is capitalizable under policy?",
+        "Which allocation driver fairly moves shared cost to lots?"
+      ],
+      "pitfalls": [
+        "Managing commitments only in spreadsheets",
+        "Paying progress without certification or change approval",
+        "Releasing lots while mandatory service or permit conditions remain open"
+      ],
+      "roles": [
+        [
+          "Land Development",
+          "Owns scope, schedule, budget and field delivery."
+        ],
+        [
+          "Civil / permitting",
+          "Owns designs, submissions, inspections and acceptance evidence."
+        ],
+        [
+          "Procurement / AP",
+          "Controls contracts, progress, retainage, vouchers and payment."
+        ],
+        [
+          "Finance / project controls",
+          "Reviews cost-to-complete, WIP and lot allocation."
+        ]
+      ],
+      "handoffs": [
+        [
+          "Engineering",
+          "Procurement",
+          "Approved scope, drawings, cost code, schedule and bidder list"
+        ],
+        [
+          "Field / certifier",
+          "JDE",
+          "Approved progress, quantity, change, retainage and invoice evidence"
+        ],
+        [
+          "JDE",
+          "Project controls",
+          "Budget, commitment, actual, payment and forecast facts"
+        ],
+        [
+          "Development",
+          "Lot Setup",
+          "Recorded lots, service status, allocated cost and release conditions"
+        ]
+      ],
+      "jdeIntro": "JDE becomes the commercial and cost-control backbone. Civil design, permitting and detailed field collaboration generally remain in specialist platforms.",
+      "jdeModules": [
+        [
+          "adjacent",
+          "Job Cost",
+          "Controls the WBS, budgets, actuals, balances and cost-to-complete basis."
+        ],
+        [
+          "adjacent",
+          "Procurement / Subcontracts",
+          "Controls horizontal commitments, commercial changes and progress."
+        ],
+        [
+          "adjacent",
+          "AP + General Accounting",
+          "Posts certified cost, retainage, liabilities, payments and allocation entries."
+        ],
+        [
+          "external",
+          "Civil / field / permitting",
+          "Owns drawings, schedules, inspection evidence and municipal workflow."
+        ]
+      ],
+      "jdeReferences": [
+        [
+          "Community and development job",
+          "P44H101 · P51006",
+          "F44H101 · F0006 · F5108 · F0901",
+          "Connect the community to its Job Cost structure."
+        ],
+        [
+          "Community profitability",
+          "P44H102 Community Pro Forma",
+          "HBM pro forma data + governed source assumptions",
+          "Compare plan mix, lot premiums, option revenue, land/development cost and direct construction cost as the phase plan changes."
+        ],
+        [
+          "Budget and cost inquiry",
+          "P512000",
+          "F0902 · F0911",
+          "Review original/revised budget, commitments, actuals and projected final amounts."
+        ],
+        [
+          "Horizontal contracts",
+          "P4310",
+          "F4301 · F4311 · F43199",
+          "Control purchase orders, subcontracts, changes and commitment audit detail."
+        ],
+        [
+          "Progress and payment",
+          "P4314 + AP payment processing",
+          "F0411 · F0911",
+          "Voucher approved progress and retainage according to configuration."
+        ],
+        [
+          "Engineering and permitting",
+          "Civil / field / municipal platforms",
+          "External drawings, permits and inspection evidence",
+          "Integrate approved status and references; do not force design documents into transaction tables."
+        ]
+      ],
+      "quiz": {
+        "question": "A road subcontract is approved but no work has been certified or invoiced. What exists financially?",
+        "options": [
+          "A supplier commitment, but normally no AP liability yet",
+          "A posted cash payment",
+          "Recognized home-sale revenue"
+        ],
+        "answer": 0,
+        "explanation": "The subcontract creates a commitment. Actual cost and AP arise from approved progress, receipt, accrual or voucher processing."
+      },
+      "record": [
+        "Community / phase",
+        "Development job, recorded plan, services, acceptance and cost pool"
+      ]
+    },
+    {
+      "slug": "lot-product",
+      "short": "Ready the lot",
+      "phase": "Product and inventory",
+      "title": "Create the lot and product definition",
+      "question": "What can be sold and built on this home site?",
+      "summary": "The builder creates a governed home-site record, assigns its financial identity, defines eligible plans and elevations, and establishes current pricing, bids, takeoffs, permits and release conditions.",
+      "outcome": "Lot 27 is uniquely identified, financially structured, saleable and/or buildable, with one valid product and cost definition.",
+      "input": "Recorded lot, services, allocated basis and release conditions",
+      "output": "Governed home site with product, price and cost context",
+      "consumer": "Sales and Construction Planning",
+      "story": "Lot 27 now becomes more than a line on a subdivision plan. It receives an address, status, lot attributes, a Job Cost identity and allowed home products. Product teams define plan and elevation choices. Estimating teams maintain two complementary cost mechanisms: bids choose the applicable supplier/trade price, while takeoffs accumulate material quantities required by the plan, elevation and options.",
+      "steps": [
+        [
+          "Create the home site",
+          "Establish community, phase, lot, address, status and durable source cross-references.",
+          "P44H201 writes the governed lot to F44H201; HBM/Job Cost uses F0006, F5108 and F0901 for the lot job and account structure."
+        ],
+        [
+          "Assign product rules",
+          "Define eligible plans, elevations, swings, specifications and option restrictions.",
+          "P44H301/F44H301 define plans and elevations. P44H401/F44H401/F44H402 define options and packages."
+        ],
+        [
+          "Define cost",
+          "Maintain effective bids, supplier assignments and cumulative takeoff quantities.",
+          "P44H601 → F44H601/F44H611 bids; P44H602 → F44H602 takeoffs; P44H603/F44H603 pricing; P44H604/F44H604 suppliers."
+        ],
+        [
+          "Pass the readiness gate",
+          "Confirm legal, service, permit, product, price, cost and release requirements.",
+          "P44H201 controls lot release. P44H200A provides the operational lot view; F44H002 supplies configured activity rules."
+        ]
+      ],
+      "decisions": [
+        "Is the lot saleable, buildable or both?",
+        "Which plans and elevations are permitted?",
+        "Which bid/takeoff version is effective for the intended start?"
+      ],
+      "pitfalls": [
+        "Duplicate lot or business-unit identifiers",
+        "Overlapping effective dates",
+        "Confusing a bid price with a takeoff quantity"
+      ],
+      "roles": [
+        [
+          "Community operations",
+          "Owns lot readiness, status and release dates."
+        ],
+        [
+          "Product / design",
+          "Owns plans, elevations, specifications and restrictions."
+        ],
+        [
+          "Estimating / purchasing",
+          "Owns bids, takeoffs, suppliers and effective cost rules."
+        ],
+        [
+          "Finance",
+          "Owns allocated land basis and the lot/job accounting structure."
+        ]
+      ],
+      "handoffs": [
+        [
+          "Development",
+          "HBM",
+          "Recorded lot, address, service status, allocation and gate conditions"
+        ],
+        [
+          "Product",
+          "HBM",
+          "Plan/elevation eligibility, specification and option rules"
+        ],
+        [
+          "Estimating",
+          "HBM",
+          "Bid, takeoff, supplier and effective dates"
+        ],
+        [
+          "HBM",
+          "Sales / scheduling",
+          "Saleable/buildable status, product eligibility and governed lot ID"
+        ]
+      ],
+      "jdeIntro": "This is where Homebuilder Management becomes the lifecycle anchor for the individual home site and connects it to Job Cost, product and future sales/start activity.",
+      "jdeModules": [
+        [
+          "primary",
+          "HBM Home Site",
+          "Owns the community/phase/lot context, status, address and product eligibility."
+        ],
+        [
+          "primary",
+          "HBM bids and takeoffs",
+          "Provides applicable supplier/trade cost and accumulated material requirements."
+        ],
+        [
+          "adjacent",
+          "Job Cost",
+          "Carries the lot business unit, accounts, budget and allocated developed-land basis."
+        ],
+        [
+          "external",
+          "Planning / CRM / documents",
+          "Owns release strategy, customer-facing inventory and detailed design content."
+        ]
+      ],
+      "jdeReferences": [
+        [
+          "Home site and status",
+          "P44H201 · P44H200A",
+          "F44H201 · F44H201H · F44H002",
+          "Create the lot, manage release/status and review the lot inventory."
+        ],
+        [
+          "Plan and option masters",
+          "P44H301 · P44H401",
+          "F44H301 · F44H401 · F44H402",
+          "Define plans, elevations, options and packages available to the community."
+        ],
+        [
+          "Material-item foundation",
+          "P44H600",
+          "F4101 · F44H4101",
+          "Establish the EnterpriseOne items and homebuilder-specific item attributes required before material takeoffs can create valid purchasing demand."
+        ],
+        [
+          "Bid contracts",
+          "P44H601",
+          "F44H601 · F44H611",
+          "Select the applicable supplier/trade price rule; bid matching is not cumulative."
+        ],
+        [
+          "Takeoffs and item pricing",
+          "P44H602 · P44H603 · P44H604",
+          "F44H602 · F44H602H · F44H603 · F44H604",
+          "Accumulate all applicable takeoff quantities, price material items and assign suppliers. Configured '+' values can provide less-specific fallback matching."
+        ],
+        [
+          "Lot job and accounts",
+          "P51006 · P512000",
+          "F0006 · F5108 · F0901 · F0902",
+          "Provide the Job Cost identity, account structure and financial inquiry for the lot."
+        ]
+      ],
+      "quiz": {
+        "question": "What is the simplest difference between a bid and a takeoff?",
+        "options": [
+          "A bid selects price/supplier logic; a takeoff accumulates required quantities",
+          "A bid is for buyers; a takeoff is for title companies",
+          "They are two names for the same record"
+        ],
+        "answer": 0,
+        "explanation": "Bids resolve the applicable trade or supplier price. Takeoffs accumulate material and assembly quantities for the configured home."
+      },
+      "record": [
+        "Home site / Lot 27",
+        "Address, lot status, job, eligible product, cost basis and release gates"
+      ]
+    },
+    {
+      "slug": "sell-configure",
+      "short": "Sell & configure",
+      "phase": "Buyer commitment",
+      "title": "Sell and configure the home",
+      "question": "Who is buying, what are they buying, and on what terms?",
+      "summary": "Sales qualifies the buyer, validates available inventory, controls reservations, executes the purchase agreement and captures the approved plan, elevation, options, premiums, incentives, deposits and dates.",
+      "outcome": "The builder has a governed buyer—or an approved spec-home decision—and one revision-controlled home configuration for downstream planning.",
+      "input": "Saleable lot, eligible product, price and customer interest",
+      "output": "Executed contract or approved spec configuration",
+      "consumer": "Lot Start and Construction Planning",
+      "story": "A buyer discovers Willow Creek in Salesforce and selects Lot 27. Salesforce owns the lead, activities and customer journey, but JDE HBM confirms that the lot can be reserved and holds the accepted ERP sale context. The signed agreement stays in the document/e-signature platform. Deposit receipts are controlled financially. Structural options freeze earlier than cosmetic choices, so every downstream team needs the same configuration version.",
+      "steps": [
+        [
+          "Qualify and match",
+          "Connect buyer needs to available communities, lots, plans and price ranges.",
+          "Salesforce owns lead/opportunity activity; P44H500 reads governed lot and sales context from F44H201/F44H501."
+        ],
+        [
+          "Validate and reserve",
+          "Ask the authoritative lot record to accept a time-bound hold; do not rely on CRM availability alone.",
+          "P44H500 Sales Workbench controls the accepted HBM sale status in F44H501 and history in F44H501H."
+        ],
+        [
+          "Contract and collect",
+          "Execute the agreement, capture approved economics and process deposits under policy.",
+          "P01012/F0101/F0111 establish buyer identity. Deposit accounting uses configured AR/financial processing; F03B11 holds customer ledger items when used."
+        ],
+        [
+          "Configure and freeze",
+          "Capture selected options and enforce structural, design-center and cosmetic cutoff dates.",
+          "P44H501 selects plan/elevation/options; F44H501 holds configuration and F44H511/F44H511H hold option selections/history."
+        ]
+      ],
+      "decisions": [
+        "Buyer sale or spec start?",
+        "Is the lot truly available and eligible?",
+        "Which price components and incentives are approved?",
+        "Which changes remain allowed after each cutoff?"
+      ],
+      "pitfalls": [
+        "Treating CRM interest as an accepted reservation",
+        "Two buyers promised the same lot",
+        "CRM price differs from the approved contract",
+        "Deposit status is confused with revenue",
+        "Stale option revisions flow into construction purchasing"
+      ],
+      "roles": [
+        [
+          "Sales",
+          "Owns the relationship, opportunity and buyer journey."
+        ],
+        [
+          "Sales operations",
+          "Owns reservation, contract version, incentives and configuration control."
+        ],
+        [
+          "Design center",
+          "Owns buyer selection experience and cutoff workflow."
+        ],
+        [
+          "Finance",
+          "Controls deposits, customer identity and approved economic consequences."
+        ]
+      ],
+      "handoffs": [
+        [
+          "Salesforce",
+          "JDE HBM",
+          "Buyer reference, lot request, hold, contract version, price and options"
+        ],
+        [
+          "JDE HBM",
+          "Salesforce",
+          "Accepted availability, reservation, ERP sale reference and milestones"
+        ],
+        [
+          "Payment / escrow",
+          "JDE",
+          "Deposit amount, payer, date, tender and external reference"
+        ],
+        [
+          "Sales / design",
+          "Lot Start",
+          "Frozen configuration, selected options, effective dates and approved exceptions"
+        ]
+      ],
+      "jdeIntro": "Salesforce is normally the engagement system. HBM governs the accepted home-site sale context and configuration used by downstream JDE processing.",
+      "jdeModules": [
+        [
+          "external",
+          "Salesforce / digital sales",
+          "Owns lead, opportunity, activities, communications and customer experience."
+        ],
+        [
+          "primary",
+          "HBM Sales Workbench",
+          "Connects buyer, lot, plan, options, premiums, incentives and operational sale status."
+        ],
+        [
+          "adjacent",
+          "Address Book / AR",
+          "Creates transaction-ready buyer identity and controls approved receipts/deposit balances."
+        ],
+        [
+          "external",
+          "E-signature / design center",
+          "Retains signed documents and the interactive selection experience."
+        ]
+      ],
+      "jdeReferences": [
+        [
+          "Sales and reservation",
+          "P44H500 Sales Workbench",
+          "F44H501 · F44H501H · F44H201",
+          "Govern the accepted lot, buyer, plan, pricing and operational sales status."
+        ],
+        [
+          "Configuration and options",
+          "P44H501 Select Options",
+          "F44H511 · F44H511H · F44H401",
+          "Capture selected options and preserve change history for downstream purchasing."
+        ],
+        [
+          "Buyer identity",
+          "P01012",
+          "F0101 · F0111 · F03012 when AR customer setup is required",
+          "Create the transaction-ready buyer and contacts."
+        ],
+        [
+          "Deposits and receipts",
+          "Configured Accounts Receivable processing",
+          "F03B11 + related receipt tables",
+          "Apply the builder's accounting policy; HBM does not replace the approved deposit process."
+        ],
+        [
+          "CRM and documents",
+          "Salesforce · e-signature · Orchestrator/AIS",
+          "CRM Opportunity ID · contract version · JDE sale reference · correlation ID",
+          "Synchronize accepted status and configuration through explicit request/response contracts while signed documents remain in the document platform."
+        ]
+      ],
+      "quiz": {
+        "question": "Salesforce shows Lot 27 as available, but JDE HBM rejects the reservation. Which status should govern the accepted hold?",
+        "options": [
+          "Salesforce, because the salesperson sees it first",
+          "JDE HBM, because it owns the accepted lot reservation/status",
+          "Whichever screen was refreshed most recently"
+        ],
+        "answer": 1,
+        "explanation": "Salesforce presents inventory and coordinates engagement, but the governed JDE/HBM response should determine whether the hold is accepted."
+      },
+      "record": [
+        "Configuration and sale",
+        "Buyer/spec decision, plan, options, price, deposits, version and cutoffs"
+      ]
+    },
+    {
+      "slug": "build-home",
+      "short": "Start & build",
+      "phase": "Vertical execution",
+      "title": "Start and build the home",
+      "question": "How does an approved configuration become coordinated field work?",
+      "summary": "Lot Start converts the home definition into lot-specific budget and purchasing records. Construction then sequences trades, manages changes and inspections, and accumulates actual cost against the approved plan.",
+      "outcome": "Lot 27 is complete, inspected, financially reconciled and ready for the controlled closing process.",
+      "input": "Authorized lot, frozen configuration, effective bids/takeoffs and permits",
+      "output": "Completed home with reconciled cost and open-item list",
+      "consumer": "Closing Team",
+      "story": "For Lot 27, the Lot Start engine evaluates the plan, elevation and options against effective bids and cumulative takeoffs. Teams review exceptions such as Supplier TBD before purchase orders and subcontracts are generated. The field platform sequences trades and returns approved completion, change and exception evidence. JDE remains the commercial and financial record while the field platform owns the detailed schedule and site collaboration.",
+      "steps": [
+        [
+          "Authorize the start",
+          "Confirm permits, configuration freeze, current cost rules, supplier readiness and start authority.",
+          "P44H200A/P44H201 expose lot readiness; F44H201 provides the start/configuration context and F44H002 supports configured activity rules."
+        ],
+        [
+          "Generate and review",
+          "Run Lot Start in proof/final mode, inspect workfile lines and resolve missing suppliers or invalid quantities.",
+          "R44H700 proof uses F44H71W1; final writes F44H711. P44H711 reviews the lot-start workfile before commitment generation."
+        ],
+        [
+          "Create commitments",
+          "Generate controlled purchase orders/subcontracts and expose released work to the field.",
+          "R44H7113 uses the reviewed workfile to create Procurement documents in F4301/F4311 and commitment audit/balance effects in F43199/F0902."
+        ],
+        [
+          "Execute and account",
+          "Capture completion, inspections, changes, receipts, vouchers, payments, actual cost and forecast.",
+          "P44H703/F44H711P supports after-start purchasing; P4314/F0411/F0911 and P512000/F0902 support vouchering and job-cost control."
+        ]
+      ],
+      "decisions": [
+        "Is every mandatory start gate complete?",
+        "Are exceptions safe to release?",
+        "Is a change buyer-driven, field-driven, design correction or trade back-charge?"
+      ],
+      "pitfalls": [
+        "Generating commitments from an unfrozen configuration",
+        "Duplicate Lot Start runs",
+        "Posting from an unapproved field event"
+      ],
+      "roles": [
+        [
+          "Start coordinator",
+          "Validates configuration, workfile and supplier exceptions."
+        ],
+        [
+          "Construction",
+          "Owns schedule, quality, inspections and field decisions."
+        ],
+        [
+          "Purchasing",
+          "Owns commitments, supplier scope, change and commercial control."
+        ],
+        [
+          "AP / Finance",
+          "Owns vouchers, payment, WIP, reconciliation and cost forecast."
+        ]
+      ],
+      "handoffs": [
+        [
+          "HBM Lot Start",
+          "JDE Procurement",
+          "Lot/job, scope, quantity, cost, supplier and dates"
+        ],
+        [
+          "JDE",
+          "Field platform",
+          "Released work package, supplier, schedule need and change status"
+        ],
+        [
+          "Field platform",
+          "JDE",
+          "Approved completion, receipt, exception, change and invoice evidence"
+        ],
+        [
+          "Construction",
+          "Closing",
+          "Completion, inspections, occupancy readiness, cost status and open items"
+        ]
+      ],
+      "jdeIntro": "This is the most distinctive HBM process: configuration and cost rules become lot-specific workfile lines, budgets and supplier commitments.",
+      "jdeModules": [
+        [
+          "primary",
+          "HBM Lot Start",
+          "Resolves the configuration against bids/takeoffs and creates reviewed lot-specific workfile lines."
+        ],
+        [
+          "adjacent",
+          "Procurement / Subcontracts",
+          "Creates and controls supplier commitments, changes, receipts and commercial status."
+        ],
+        [
+          "adjacent",
+          "Job Cost / AP / GL",
+          "Compares budget, commitments and actuals and posts lot-level construction WIP."
+        ],
+        [
+          "external",
+          "Field scheduling",
+          "Owns detailed trade sequence, mobile collaboration, inspections and photos."
+        ]
+      ],
+      "jdeReferences": [
+        [
+          "Lot readiness and workbench",
+          "P44H200A · P44H201",
+          "F44H201 · F44H002",
+          "Review the lot, configuration, status and construction activity context."
+        ],
+        [
+          "Lot Start generation and review",
+          "R44H700 · P44H711",
+          "F44H71W1 proof · F44H711 final workfile",
+          "Proof validates without saving final lines; final creates the workfile. Resolve Supplier TBD, holds, quantities, cancellations and history before commitment generation."
+        ],
+        [
+          "Field package outputs",
+          "R44H7003 Configuration List + configured Notice to Proceed",
+          "Configured report output + JDE lot/document IDs",
+          "Provide the field with the approved home configuration, buyer options and controlled authorization to proceed."
+        ],
+        [
+          "Commitment generation",
+          "R44H7113 · P4310",
+          "F4301 · F4311 · F43199 · F0902",
+          "Generate purchase orders/subcontracts and expose detail plus configured commitment balances."
+        ],
+        [
+          "After-start changes",
+          "P44H703",
+          "F44H711P · F44H711",
+          "Stage extra or external purchase-order changes before controlled commitment processing."
+        ],
+        [
+          "Voucher alternatives",
+          "P0411 · P44H702 · R44H702 · P4314",
+          "F0411 · F0911 · F43199",
+          "Choose manual, workbench, batch/auto or receipt-based vouchering according to evidence, approval and configuration—not convenience."
+        ],
+        [
+          "Actual cost and inquiry",
+          "P512000",
+          "F0411 · F0911 · F0902",
+          "Compare approved budget, commitment balances, actuals and projected final cost."
+        ],
+        [
+          "Field integration",
+          "P44H9903 · P44H9904 · Orchestrator/AIS",
+          "F44H790 · JDE document IDs · external event IDs",
+          "Send governed lot and commitment data to scheduling, and receive approved milestone events without making the field tool the financial ledger."
+        ]
+      ],
+      "quiz": {
+        "question": "What does commitment generation normally create before a supplier invoice exists?",
+        "options": [
+          "A purchase order/subcontract and commitment visibility",
+          "A home-sale closing journal",
+          "A warranty claim"
+        ],
+        "answer": 0,
+        "explanation": "Commitment generation creates procurement documents and commitment visibility. AP and actual cost arise later through approved execution and vouchering."
+      },
+      "record": [
+        "Active home / construction job",
+        "Workfile, budget, commitments, field milestones, actuals and forecast"
+      ]
+    },
+    {
+      "slug": "close-transfer",
+      "short": "Close & transfer",
+      "phase": "Settlement and ownership",
+      "title": "Close, transfer and recognize",
+      "question": "How does a completed home become a legally transferred, financially closed sale?",
+      "summary": "The closing team reconciles the buyer agreement, deposits, lender/title conditions and final settlement statement, confirms legal transfer and funding, then posts the approved revenue, cost and cash consequences.",
+      "outcome": "Title has transferred to the buyer, proceeds and deposits reconcile, revenue and cost are posted, and the homeowner/warranty handoff is complete.",
+      "input": "Completed home, buyer contract, deposits and approved settlement package",
+      "output": "Legally transferred and financially posted home",
+      "consumer": "Warranty / Customer Care",
+      "story": "Lot 27 is physically ready, but the sale is not complete until legal and financial conditions converge. The title/escrow platform manages the legal closing workflow and statement. Salesforce coordinates customer communications. JDE controls approved receipts and posting. The closing process must reconcile the executed contract, earnest-money deposits, settlement statement, funding, title-transfer evidence and the final inventory/WIP relief.",
+      "steps": [
+        [
+          "Prepare to close",
+          "Confirm inspections/occupancy, lender and title conditions, homeowner walkthrough and final price.",
+          "P44H500/F44H501 provide the governed sale and close context; title, lender and occupancy evidence remain in specialist platforms."
+        ],
+        [
+          "Balance settlement",
+          "Reconcile deposits, proceeds, taxes, commissions, concessions, adjustments and disbursements.",
+          "P44H591 prepares the closing worksheet using F44H501/F44H401 and templates from P44H590/F44H590; F44H599 supports configured data mapping."
+        ],
+        [
+          "Fund and transfer",
+          "Confirm escrow funding, signatures, legal transfer/recording and key release.",
+          "Title/escrow is authoritative for funding and legal transfer. JDE receives only the approved settlement version and proof references."
+        ],
+        [
+          "Post and hand off",
+          "Apply deposits, post revenue and cost of sales, close the operational record and activate warranty.",
+          "P44H591 creates closing entries in F44H591 and the sales journal in F0911; P44H500 can populate F1201/F1217 and F1720/F1721 when Service Management is enabled."
+        ]
+      ],
+      "decisions": [
+        "Are all legal and operational prerequisites complete?",
+        "Does the approved settlement balance to contract and deposits?",
+        "Has legal transfer actually occurred?"
+      ],
+      "pitfalls": [
+        "Posting from a draft settlement statement",
+        "Deposits do not reconcile to the buyer contract",
+        "Warranty begins without a governed closed-home snapshot"
+      ],
+      "roles": [
+        [
+          "Closing / title / escrow",
+          "Owns legal workflow, statement, funding and transfer evidence."
+        ],
+        [
+          "Salesforce / customer team",
+          "Owns communication, appointments and buyer-facing readiness."
+        ],
+        [
+          "Finance",
+          "Owns receipts, balanced journals, revenue, COGS and cash reconciliation."
+        ],
+        [
+          "Warranty",
+          "Accepts the homeowner, home configuration, dates and open items."
+        ]
+      ],
+      "handoffs": [
+        [
+          "JDE HBM",
+          "Title / escrow",
+          "Sale reference, legal parties, address, price, deposits and prerequisites"
+        ],
+        [
+          "Title / escrow",
+          "JDE",
+          "Approved statement version, funds, disbursements, adjustments and transfer proof"
+        ],
+        [
+          "JDE",
+          "Salesforce",
+          "Posted close, final status and customer-lifecycle milestone"
+        ],
+        [
+          "JDE / HBM",
+          "Warranty",
+          "Closed home, owner, configuration, close date and open items"
+        ]
+      ],
+      "jdeIntro": "Specialist platforms coordinate legal settlement; JDE retains the posted financial result and the auditable link back to the home and buyer.",
+      "jdeModules": [
+        [
+          "primary",
+          "HBM sale / closing context",
+          "Connects the home, buyer, contract economics and operational close status."
+        ],
+        [
+          "adjacent",
+          "AR + General Accounting",
+          "Applies deposits/proceeds and posts approved revenue, cost of sales and cash consequences."
+        ],
+        [
+          "adjacent",
+          "Job Cost",
+          "Provides accumulated home cost and supports WIP/inventory-to-cost-of-sales reconciliation."
+        ],
+        [
+          "external",
+          "Title / escrow + Salesforce",
+          "Owns legal workflow, funding coordination and buyer engagement."
+        ]
+      ],
+      "jdeReferences": [
+        [
+          "Sale and close context",
+          "P44H500 Sales Workbench",
+          "F44H501 · F44H501H",
+          "Hold the governed buyer, configuration, sale dates, status and closing history."
+        ],
+        [
+          "Closing template",
+          "P44H590",
+          "F44H590 · F44H599",
+          "Define account instructions and configured mappings for the community closing worksheet."
+        ],
+        [
+          "Closing worksheet and journal",
+          "P44H591 (W44H591A / W44H591C)",
+          "F44H591 · F0911",
+          "Balance in proof mode, then create the approved sales journal."
+        ],
+        [
+          "Deposits and proceeds",
+          "Configured AR and receipt processing",
+          "F03B11 + related receipt tables",
+          "Reconcile customer deposits and proceeds to the approved settlement package."
+        ],
+        [
+          "Optional warranty population",
+          "P44H500 Warranty Management (W44H500K)",
+          "F1201 · F1217 · optionally F1720/F1721",
+          "Create install-base and service-contract records only when Service Management is licensed and configured."
+        ],
+        [
+          "Legal closing",
+          "Title / escrow platform + Orchestrator/AIS",
+          "Settlement version · funding reference · recording evidence",
+          "The specialist platform owns legal workflow; JDE owns the posted financial result."
+        ]
+      ],
+      "quiz": {
+        "question": "Who should own the final posted revenue and cost-of-sales facts?",
+        "options": [
+          "The title portal",
+          "Salesforce",
+          "JDE Financials"
+        ],
+        "answer": 2,
+        "explanation": "Title/escrow owns legal settlement workflow and Salesforce owns engagement, but JDE Financials owns posted accounting facts."
+      },
+      "record": [
+        "Closed home",
+        "Legal owner, close date, posted sale, relieved cost basis and warranty start"
+      ]
+    },
+    {
+      "slug": "warranty",
+      "short": "Support owner",
+      "phase": "Post-close service",
+      "title": "Support the homeowner and learn",
+      "question": "How does the builder resolve defects and improve the next home?",
+      "summary": "Customer Care receives requests, checks coverage, diagnoses the issue, dispatches internal or trade work, tracks completion and cost, and feeds root-cause learning back to product, quality and purchasing.",
+      "outcome": "The claim is resolved, the homeowner is informed, cost/recovery is recorded and reusable defect learning is captured.",
+      "input": "Closed-home snapshot, coverage terms and homeowner request",
+      "output": "Resolved claim, cost, recovery and quality feedback",
+      "consumer": "Product / Estimating / Quality",
+      "story": "After move-in, the Lot 27 homeowner reports a window leak. The warranty platform links the case to the closed home, configuration and responsible trade. A coverage decision is made by policy and authorized staff—not by AI. The repair may use an internal work order or a supplier purchase order. JDE records approved commercial and financial facts, while the customer platform owns communication and appointments.",
+      "steps": [
+        [
+          "Receive and classify",
+          "Identify the home, claimant, issue, urgency, evidence and warranty policy version.",
+          "External warranty/CRM normally owns intake. If JDE Case Management is used, P17500 provides the case-entry path."
+        ],
+        [
+          "Decide coverage",
+          "Confirm eligibility, responsibility and the approved repair path.",
+          "P1723 can support entitlement inquiry; F1201/F1217 and F1720/F1721 hold optional install-base and contract context."
+        ],
+        [
+          "Dispatch and resolve",
+          "Create internal or supplier work, schedule access, capture completion and homeowner acknowledgement.",
+          "P17714/P48201 create and manage service work orders in F4801/F4801T/F4817; P4310/F4301/F4311 supports supplier repair work."
+        ],
+        [
+          "Account and learn",
+          "Record repair cost/recovery and standardize defect, cause, remedy, product and trade feedback.",
+          "F0411/F0911 capture approved cost; correlate case, work order, supplier and defect codes for recovery and analysis."
+        ]
+      ],
+      "decisions": [
+        "Is the issue covered?",
+        "Internal repair, supplier callback or paid external work?",
+        "Is a back-charge or recovery supportable?"
+      ],
+      "pitfalls": [
+        "No connection to the original home configuration",
+        "Repair cost is posted without a case/work reference",
+        "Free-text defects cannot be analyzed across communities"
+      ],
+      "roles": [
+        [
+          "Customer Care",
+          "Owns communication, triage, appointments and closure."
+        ],
+        [
+          "Warranty manager",
+          "Owns coverage and responsibility decisions."
+        ],
+        [
+          "Trade / technician",
+          "Performs and documents the remedy."
+        ],
+        [
+          "Finance / quality",
+          "Records cost/recovery and turns patterns into prevention."
+        ]
+      ],
+      "handoffs": [
+        [
+          "Homeowner portal",
+          "Warranty team",
+          "Home, issue, urgency, evidence and preferred contact"
+        ],
+        [
+          "Warranty",
+          "JDE / supplier",
+          "Approved work, scope, responsibility, dates and cost authority"
+        ],
+        [
+          "JDE",
+          "Warranty",
+          "PO/work/payment and posted-cost status"
+        ],
+        [
+          "Warranty analytics",
+          "Product / quality",
+          "Standard defect, cause, remedy, trade and cost pattern"
+        ]
+      ],
+      "jdeIntro": "JDE can support work, procurement, inventory and financial control, but many builders use a specialist warranty platform for the homeowner and field experience.",
+      "jdeModules": [
+        [
+          "external",
+          "Warranty / CRM service",
+          "Owns cases, coverage workflow, appointments, communication and homeowner experience."
+        ],
+        [
+          "adjacent",
+          "Procurement / AP",
+          "Controls approved supplier repair work, invoices, payment and recoveries."
+        ],
+        [
+          "adjacent",
+          "Work Orders / Inventory",
+          "Optionally controls internal work and parts where licensed/configured."
+        ],
+        [
+          "adjacent",
+          "Financials / Analytics",
+          "Posts warranty cost or provision usage and provides quality feedback facts."
+        ]
+      ],
+      "jdeReferences": [
+        [
+          "Install base and warranty contracts",
+          "P44H500 Warranty Management · P1702",
+          "F1201 · F1217 · F1720 · F1721",
+          "Optional JDE Service Management path populated after sale closing."
+        ],
+        [
+          "Case and entitlement",
+          "P17500 · P1723",
+          "Configured Case Management and service-contract records",
+          "Use only when licensed/configured; many builders keep homeowner cases in a specialist portal."
+        ],
+        [
+          "Service work order",
+          "P17714 · P48201",
+          "F4801 · F4801T · F4817",
+          "Control internal service work, assignment and service-specific work-order detail."
+        ],
+        [
+          "Supplier repair",
+          "P4310",
+          "F4301 · F4311 · F43199",
+          "Authorize supplier callback or paid external work with controlled commitments."
+        ],
+        [
+          "Cost and recovery",
+          "AP / GL processing",
+          "F0411 · F0911",
+          "Post approved warranty cost and supported supplier recovery according to policy."
+        ],
+        [
+          "Homeowner experience",
+          "Warranty / CRM service platform + Orchestrator/AIS",
+          "Case ID · home/install-base ID · JDE document IDs",
+          "Keep communication and appointments in the engagement platform while JDE retains approved commercial facts."
+        ]
+      ],
+      "quiz": {
+        "question": "Which platform should normally own the homeowner conversation and appointment experience?",
+        "options": [
+          "The warranty/CRM service platform",
+          "The General Ledger",
+          "The lot-start workfile"
+        ],
+        "answer": 0,
+        "explanation": "The warranty or CRM service platform usually owns the engagement experience. JDE retains approved work, procurement, inventory and financial facts."
+      },
+      "record": [
+        "Homeowner service history",
+        "Case, coverage, work, cost, recovery, defect cause and remedy"
+      ]
+    }
+  ],
+  "foundationControlItems": [
+    [
+      "P44H001 · Homebuilder constants",
+      "Set company-level HBM behavior and defaults before communities, sales and Lot Start processing begin."
+    ],
+    [
+      "P44H002 · Activity rules",
+      "Define permitted sales and construction status transitions, required sequencing and the history expected for each lot."
+    ],
+    [
+      "UDCs and document types",
+      "Govern activity codes, trade codes, option/takeoff reasons, order types, statuses and reporting classifications."
+    ],
+    [
+      "Job and account templates",
+      "Standardize the business-unit hierarchy, cost codes, cost types, budget ledgers and posting rules copied to communities and lots."
+    ],
+    [
+      "Versions and processing options",
+      "Control proof/final behavior, defaults, selection, update paths and batch execution. Treat versions as governed configuration."
+    ],
+    [
+      "Security and approvals",
+      "Separate master-data maintenance, exception release, commitment generation, vouchering and closing authority."
+    ]
+  ],
+  "statusModel": [
+    [
+      "Available",
+      "Lot and product are approved for customer selection.",
+      "Lot release gate"
+    ],
+    [
+      "Reserved",
+      "A time-bound buyer hold has been accepted by the authoritative lot process.",
+      "Reservation expiry / release"
+    ],
+    [
+      "Sold",
+      "An executed agreement and governed configuration exist.",
+      "Contract + buyer identity"
+    ],
+    [
+      "Under construction",
+      "Start gates passed and the home entered vertical execution.",
+      "Lot Start + start authorization"
+    ],
+    [
+      "Complete",
+      "Construction and required inspections are complete; close exceptions are visible.",
+      "Completion / occupancy evidence"
+    ],
+    [
+      "Closed",
+      "Legal transfer and approved financial posting are complete.",
+      "Closing worksheet + transfer proof"
+    ]
+  ],
+  "reportGroups": [
+    {
+      "title": "Sales and closing",
+      "reports": [
+        [
+          "R44H5000",
+          "Weekly Sales",
+          "Review current sales activity and operational movement."
+        ],
+        [
+          "R44H5003",
+          "Backlog",
+          "Monitor contracted homes that have not yet closed."
+        ],
+        [
+          "R44H5004",
+          "Projected Closings",
+          "Coordinate expected closings, workload and cash timing."
+        ],
+        [
+          "R44H5005",
+          "Cancellations / Transfers",
+          "Review buyer cancellations and lot or contract transfers."
+        ],
+        [
+          "R44H5006",
+          "Detail Sales Status",
+          "Inspect detailed home-sale status and supporting attributes."
+        ]
+      ]
+    },
+    {
+      "title": "Cost and purchasing",
+      "reports": [
+        [
+          "R44H6001",
+          "Bid Contract Price Variance",
+          "Find differences between expected and effective bid pricing."
+        ],
+        [
+          "R44H6002",
+          "Bid Form / Contract Confirmation",
+          "Support bid review and supplier confirmation."
+        ],
+        [
+          "R44H6003",
+          "Base House Cost by Plan",
+          "Compare modeled cost across plans and communities."
+        ],
+        [
+          "R44H6004",
+          "Option Cost Analysis",
+          "Review cost impact of options and configuration choices."
+        ],
+        [
+          "R44H6006",
+          "Option Cost by Option",
+          "Inspect cost detail for individual options."
+        ],
+        [
+          "R44H6007 / R44H6009",
+          "Supplier comparisons",
+          "Compare bid suppliers and review bid content by supplier."
+        ]
+      ]
+    },
+    {
+      "title": "Lot Start and field package",
+      "reports": [
+        [
+          "R44H700",
+          "Lot Start Workfile Generation",
+          "Resolve the approved configuration against effective bids and takeoffs in proof or final mode."
+        ],
+        [
+          "R44H7003",
+          "Configuration List",
+          "Produce the field-facing configuration list—often called the garage sticker."
+        ],
+        [
+          "R44H7113",
+          "Commitment Generation",
+          "Create controlled purchase orders and subcontracts from reviewed workfile lines."
+        ],
+        [
+          "Configured output",
+          "Notice to Proceed",
+          "Issue the approved authorization and scope package using the builder's controlled form and process."
+        ]
+      ]
+    }
+  ],
+  "stagePractitionerPanels": {
+    "land-opportunity": [
+      {
+        "title": "From underwriting to an HBM pro forma",
+        "intro": "Keep the detailed land investment model in its governed source. After approval, P44H102 can express the operating assumptions needed to evaluate community profitability inside the homebuilding context.",
+        "items": [
+          [
+            "External underwriting",
+            "Parcel strategy, timing, financing, scenario analysis and acquisition conditions remain in the approved modeling source."
+          ],
+          [
+            "P44H102 Community Pro Forma",
+            "Compare plan mix, lot premiums, option revenue, direct construction cost and land/development assumptions."
+          ],
+          [
+            "Controlled handoff",
+            "Carry the approved model version, assumptions, approval reference and effective date so Finance can reconcile later changes."
+          ]
+        ]
+      }
+    ],
+    "land-development": [
+      {
+        "title": "Refresh profitability before phase release",
+        "intro": "Horizontal cost, lot yield and product mix change during development. The release decision should compare the current governed assumptions—not the original deal model alone.",
+        "items": [
+          [
+            "Update",
+            "Approved lot yield, lot mix, developed-lot basis, premiums and revised direct-cost assumptions."
+          ],
+          [
+            "Compare",
+            "Current community pro forma against the investment baseline and Job Cost commitments/actuals."
+          ],
+          [
+            "Decide",
+            "Release, re-phase, re-price or hold—with the decision and model version retained as evidence."
+          ]
+        ]
+      }
+    ],
+    "lot-product": [
+      {
+        "title": "Build the material-item foundation first",
+        "intro": "A takeoff cannot create reliable demand if its material items are not governed. Establish the item and its homebuilder attributes before quantity rules are authored.",
+        "items": [
+          [
+            "1 · EnterpriseOne item",
+            "P44H600 works with F4101 item identity and the F44H4101 homebuilder-specific extension."
+          ],
+          [
+            "2 · Purchasing attributes",
+            "Confirm branch/plant, unit of measure, supplier strategy, cost and effective dates required by the implementation."
+          ],
+          [
+            "3 · Takeoff use",
+            "Reference governed items in cumulative plan, elevation and option quantity rules; do not hide new items inside free-text descriptions."
+          ]
+        ]
+      },
+      {
+        "title": "How selection logic resolves",
+        "intro": "Bids and takeoffs solve different problems. The configuration may use less-specific '+' values as controlled fallbacks, but effective dates and precedence must still produce an explainable result.",
+        "items": [
+          [
+            "Bid selection",
+            "Search from the most specific eligible combination toward a broader configured fallback and select the applicable supplier/trade price."
+          ],
+          [
+            "Takeoff accumulation",
+            "Accumulate every applicable quantity row across base plan, elevation, structural choice and selected option."
+          ],
+          [
+            "Control test",
+            "For one test lot, document why the winning bid was selected and how every material quantity was accumulated."
+          ]
+        ]
+      }
+    ],
+    "sell-configure": [
+      {
+        "title": "Read the contract price as a stack",
+        "intro": "The buyer sees one contract total, but the business must preserve the components that explain margin, approvals and later changes.",
+        "items": [
+          [
+            "Base home",
+            "The approved starting price for the selected plan and community."
+          ],
+          [
+            "Lot and elevation premiums",
+            "Location and exterior-design adjustments that should remain separately explainable."
+          ],
+          [
+            "Options and upgrades",
+            "Buyer selections with effective sell price, cost effect, tax treatment and cutoff status."
+          ],
+          [
+            "Incentives and concessions",
+            "Approved reductions or credits with reason, authority and version history."
+          ],
+          [
+            "Deposits",
+            "Cash received or customer-ledger activity applied according to policy; a deposit is not automatically earned revenue."
+          ],
+          [
+            "Net contract baseline",
+            "The revision-controlled total accepted for downstream planning, closing and margin analysis."
+          ]
+        ]
+      },
+      {
+        "title": "Freeze the construction baseline deliberately",
+        "intro": "Sales can continue to serve the buyer while construction protects scope. Each cutoff should identify what is frozen, who may approve an exception and which downstream records must be regenerated or changed.",
+        "items": [
+          [
+            "Structural cutoff",
+            "Freeze choices that affect engineering, permits, foundation, framing or long-lead commitments before Lot Start."
+          ],
+          [
+            "Design-center cutoff",
+            "Freeze coordinated finish packages after compatibility, price and availability validation."
+          ],
+          [
+            "Late-change exception",
+            "Require impact review for price, cost, schedule, permit and existing commitment consequences."
+          ],
+          [
+            "Accepted version",
+            "Pass one configuration version—with buyer/spec identity, plan, elevation, swing and option lines—to Lot Start."
+          ]
+        ]
+      }
+    ],
+    "build-home": [
+      {
+        "title": "Lot Start deliverables",
+        "intro": "Commitments are only one output. The field also needs a controlled description of what to build and evidence that the work is authorized.",
+        "items": [
+          [
+            "Configuration List · R44H7003",
+            "Field-facing plan, elevation and approved buyer-option detail—the commonly named garage sticker."
+          ],
+          [
+            "Notice to Proceed",
+            "Configured authorization that communicates scope, timing and commercial permission to the trade."
+          ],
+          [
+            "PO / subcontract package",
+            "F4301/F4311 commitments with supplier, lot job, scope, quantity, dates and price traceable to the workfile."
+          ]
+        ]
+      },
+      {
+        "title": "Workfile exception controls",
+        "intro": "P44H711 is an exception-control step, not a ceremonial review. Resolve the conditions below before R44H7113 creates legal commitments.",
+        "items": [
+          [
+            "Supplier TBD",
+            "Assign the approved supplier or hold the line; never allow a placeholder to become an unowned field obligation."
+          ],
+          [
+            "Hold / release",
+            "Retain an explicit reason, owner and release condition for lines blocked by design, permit, price or scope uncertainty."
+          ],
+          [
+            "Quantity revision",
+            "Capture the approved reason and verify that the revised quantity still agrees with the configured home."
+          ],
+          [
+            "Cancel / history",
+            "Cancel superseded work in a way that preserves the audit trail and correctly relieves or replaces related commitments."
+          ]
+        ]
+      },
+      {
+        "title": "Choose the voucher path by evidence",
+        "intro": "The correct path depends on how completion is approved, how the supplier invoices and what control the builder requires.",
+        "items": [
+          [
+            "P0411 · Standard voucher",
+            "Use for controlled AP entry when invoice evidence and account distribution are approved outside an automated HBM path."
+          ],
+          [
+            "P44H702 · Voucher Workbench",
+            "Review eligible HBM purchasing activity and resolve exceptions before voucher creation."
+          ],
+          [
+            "R44H702 · Auto Voucher",
+            "Create vouchers in batch only when milestone, supplier, log, amount and approval controls are reliable."
+          ],
+          [
+            "P4314 · Voucher Match",
+            "Match invoice or approved progress against the procurement document where the configured receipt/progress process requires it."
+          ]
+        ]
+      },
+      {
+        "title": "Field scheduling integration",
+        "intro": "JDE remains authoritative for governed lots and commercial commitments. The scheduling platform owns detailed trade sequence and field collaboration.",
+        "items": [
+          [
+            "P44H9903 · Lot outbound",
+            "Publish the governed lot, configuration and status context required by the field platform."
+          ],
+          [
+            "P44H9904 · Commitment outbound",
+            "Publish released purchase-order/subcontract content and revisions with stable JDE document keys."
+          ],
+          [
+            "F44H790 · Third-party milestones",
+            "Receive and map approved external milestone activity so HBM can update governed status and trigger configured follow-on controls."
+          ],
+          [
+            "Control envelope",
+            "Use correlation IDs, idempotency, acknowledgements, retry/error queues and reconciliation so no event silently disappears or posts twice."
+          ]
+        ]
+      }
+    ]
+  },
+  "salesBusinessSequence": [
+    [
+      "Discover",
+      "Salesforce records interest and buyer activity. No lot is locked."
+    ],
+    [
+      "Request",
+      "Sales asks JDE HBM to reserve a specific eligible lot."
+    ],
+    [
+      "Accept hold",
+      "HBM accepts or rejects the request and returns an authoritative expiry."
+    ],
+    [
+      "Contract",
+      "The parties execute the approved agreement and its price baseline."
+    ],
+    [
+      "Configure",
+      "Plan, elevation, premiums, incentives and options are version controlled."
+    ],
+    [
+      "Freeze & release",
+      "Cutoffs are complete and one accepted configuration moves to Lot Start."
+    ]
+  ],
+  "salesforceIntegrationContract": {
+    "title": "Salesforce–JDE integration contract",
+    "intro": "The rows below are a recommended architecture pattern—not standard out-of-the-box behavior. Define the authority, trigger, identifiers and response before building the interface.",
+    "headers": [
+      "Flow",
+      "Trigger",
+      "Authoritative owner",
+      "Minimum contract",
+      "Required response / control"
+    ],
+    "rows": [
+      [
+        "JDE → Salesforce inventory",
+        "Lot or product availability changes",
+        "JDE HBM for accepted operational status",
+        "Community, lot, product eligibility, price/effective date, JDE version",
+        "Upsert acknowledgement; stale-version rejection; reconciliation count"
+      ],
+      [
+        "Salesforce → JDE reservation",
+        "Sales user requests a hold",
+        "JDE HBM decides acceptance",
+        "CRM opportunity/buyer, lot, requested expiry, user, correlation ID",
+        "Accepted/rejected response with JDE sale reference, reason and authoritative expiry"
+      ],
+      [
+        "JDE → Salesforce reservation result",
+        "HBM accepts, releases or expires a hold",
+        "JDE HBM",
+        "JDE sale reference, lot, status, effective timestamp, correlation ID",
+        "CRM confirmation; exception queue if the matching opportunity is missing"
+      ],
+      [
+        "Salesforce / design → JDE contract",
+        "Executed agreement or approved selection revision",
+        "Signed document platform for evidence; HBM for accepted configuration",
+        "Buyer, contract version, plan/elevation/options, premiums, incentives, cutoffs",
+        "Validation result with rejected lines and accepted configuration version"
+      ],
+      [
+        "JDE → Salesforce financial milestone",
+        "Deposit posted or home closed",
+        "JDE Financials for posted fact",
+        "Amount/status only as needed, JDE document, posting date, close milestone",
+        "CRM acknowledgement; no autonomous change to the posted accounting fact"
+      ]
+    ]
+  },
+  "practiceExercises": {
+    "land-opportunity": [
+      "Classify control versus ownership",
+      "Given an option agreement, parcel ID and approval memo, identify which system owns the opportunity, title evidence and posted financial consequence.",
+      "A one-page ownership matrix that does not treat an option as a deed transfer."
+    ],
+    "land-development": [
+      "Reconcile the development job",
+      "For one horizontal contract, trace original budget, approved change, commitment detail, certified progress, AP and actual cost.",
+      "The remaining commitment and project balance agree to the supporting commercial evidence."
+    ],
+    "lot-product": [
+      "Explain one configured cost",
+      "Choose one material item and trace item setup, takeoff quantities, bid selection, supplier assignment and effective dates for Lot 27.",
+      "Another practitioner can reproduce both the selected price and accumulated quantity."
+    ],
+    "sell-configure": [
+      "Control a buyer commitment",
+      "Draft the Salesforce request and JDE response for a 48-hour hold, then reconcile base price, premiums, options, incentives and deposit status before naming the configuration version released to Lot Start.",
+      "A duplicate request cannot create two reservations; the contract total is explainable; deposits are not treated as revenue; and downstream teams receive one accepted configuration version."
+    ],
+    "build-home": [
+      "Clear a Lot Start exception",
+      "Review a Supplier TBD workfile line, determine its owner, resolve or hold it, and choose the evidence required before commitment and voucher creation.",
+      "The line has an approved supplier or explicit hold; later PO and voucher paths remain traceable."
+    ],
+    "close-transfer": [
+      "Balance the closing package",
+      "Reconcile executed contract, deposits, settlement statement, funded proceeds, transfer proof and the proposed JDE closing journal.",
+      "No draft settlement amount posts, deposits are neither omitted nor duplicated, and legal transfer is evidenced."
+    ],
+    "warranty": [
+      "Trace a callback to learning",
+      "Follow one defect from homeowner case through coverage, work order or supplier PO, posted cost/recovery and root-cause code.",
+      "The case, home, responsible trade, remedy and financial outcome can be analyzed together."
+    ]
+  },
+  "glossary": [
+    [
+      "Acquisition",
+      "The process of identifying, controlling, approving and obtaining rights to land or finished lots."
+    ],
+    [
+      "Site control",
+      "A contractual right—such as an option or purchase agreement—that may exist before legal title transfers."
+    ],
+    [
+      "Entitlement",
+      "Government approval that permits a planned land use, density or subdivision."
+    ],
+    [
+      "Horizontal development",
+      "Land work such as grading, roads, utilities, drainage and common infrastructure."
+    ],
+    [
+      "Vertical construction",
+      "Building the house itself: foundation, framing, MEP, finishes and completion."
+    ],
+    [
+      "Community / phase / lot",
+      "The hierarchy that moves from a development, to a delivery phase, to an individual home site."
+    ],
+    [
+      "Plan / elevation",
+      "The floor plan and exterior architectural style of a home."
+    ],
+    [
+      "Option",
+      "A buyer- or spec-selected feature that changes price, materials, scope or schedule."
+    ],
+    [
+      "Reservation",
+      "A time-bound, accepted hold on a specific lot. Customer interest in CRM is not a reservation until the authoritative lot process accepts it."
+    ],
+    [
+      "Configuration baseline",
+      "The approved plan, elevation, swing, options, premiums, incentives and effective version released to downstream planning."
+    ],
+    [
+      "Option cutoff",
+      "The last point at which a category of buyer choices may change without a formally approved exception."
+    ],
+    [
+      "Bid",
+      "Supplier/trade pricing logic used to determine who should perform work and at what agreed cost."
+    ],
+    [
+      "Takeoff",
+      "The accumulated quantity of materials or assemblies needed for a configured home."
+    ],
+    [
+      "Lot Start",
+      "The HBM process that converts a home configuration and cost rules into lot-specific workfile lines and commitments."
+    ],
+    [
+      "Commitment",
+      "Authorized supplier spend, normally represented by a purchase order or subcontract before an invoice becomes AP."
+    ],
+    [
+      "WIP",
+      "Work in process: qualifying accumulated cost held before the home is closed or otherwise recognized under policy."
+    ],
+    [
+      "Cost of sales",
+      "The accumulated land, development and construction cost relieved when the home sale is recognized."
+    ],
+    [
+      "Escrow",
+      "A controlled closing arrangement that holds and disburses funds/documents when agreed conditions are satisfied."
+    ],
+    [
+      "Back-charge",
+      "An approved recovery or offset against a responsible supplier for damage, rework or another contractual obligation."
+    ],
+    [
+      "System of record",
+      "The application authorized to own a specific business fact—not necessarily every screen where that fact appears."
+    ],
+    [
+      "Orchestrator / AIS",
+      "JDE integration capabilities that expose validated business actions and data without making an external system the ERP ledger."
+    ]
+  ],
+  "referenceRules": {
+    "needsValidation": [
+      "P44H501",
+      "P44H200A",
+      "P44H590",
+      "P44H591",
+      "P44H301",
+      "P44H401",
+      "R44H7113",
+      "R44H5000",
+      "R44H5003",
+      "R44H5004",
+      "R44H5005",
+      "R44H5006",
+      "R44H6001",
+      "R44H6002",
+      "R44H6003",
+      "R44H6004",
+      "R44H6006",
+      "R44H6007",
+      "R44H6009",
+      "R44H7003",
+      "F44H790"
+    ],
+    "configurationSignals": [
+      "configured",
+      "optional",
+      "Orchestrator",
+      "AIS",
+      "Salesforce",
+      "GIS",
+      "title",
+      "escrow",
+      "warranty platform",
+      "Service Management"
+    ],
+    "labels": {
+      "source": "Source-backed",
+      "configuration": "Configuration-dependent",
+      "validation": "Needs validation"
+    }
+  },
+  "rolePaths": [
+    {
+      "name": "Land & Development",
+      "audience": "Acquisition, legal, development and land finance",
+      "stages": "Stages 1–3",
+      "start": 0,
+      "focus": "Control versus ownership, investment approval, horizontal delivery and lot release."
+    },
+    {
+      "name": "Sales & Design",
+      "audience": "Sales, design center, CRM and closing teams",
+      "stages": "Stages 3, 4 and 6",
+      "start": 2,
+      "focus": "Saleable inventory, reservation, contract price, configuration freezes and closing."
+    },
+    {
+      "name": "Purchasing & Lot Start",
+      "audience": "Estimating, purchasing and start coordinators",
+      "stages": "Stages 3–5",
+      "start": 2,
+      "focus": "Product rules, bids, takeoffs, supplier exceptions, commitments and field packages."
+    },
+    {
+      "name": "Construction & Field",
+      "audience": "Construction operations and field integration teams",
+      "stages": "Stages 5–6",
+      "start": 4,
+      "focus": "Released scope, milestone evidence, change control, actual cost and close readiness."
+    },
+    {
+      "name": "Finance & Accounting",
+      "audience": "FP&A, Job Cost, AP, AR and General Accounting",
+      "stages": "All stages; focus on 1, 2, 5 and 6",
+      "start": 0,
+      "focus": "Budget, commitments, actuals, WIP/inventory, deposits, revenue and cost of sales."
+    },
+    {
+      "name": "Warranty & Customer Care",
+      "audience": "Customer care, warranty, quality and recovery teams",
+      "stages": "Stages 6–7",
+      "start": 5,
+      "focus": "Closed-home handoff, coverage, service work, cost recovery and defect learning."
+    }
+  ],
+  "moneyFlow": [
+    {
+      "step": "Approved budget",
+      "business": "The organization authorizes a cost baseline for a community, phase or lot.",
+      "jde": "Job Cost budget balances; candidate JA use must be validated locally.",
+      "ledger": "JA candidate",
+      "confidence": "configuration"
+    },
+    {
+      "step": "Supplier commitment",
+      "business": "A purchase order or subcontract reserves approved spend before an invoice exists.",
+      "jde": "F4301/F4311 detail, F43199 commitment audit detail and configured summary balances.",
+      "ledger": "PA / HA candidate",
+      "confidence": "validation"
+    },
+    {
+      "step": "Progress evidence",
+      "business": "Receipt, milestone or approved progress proves that work may be invoiced or vouchered.",
+      "jde": "Procurement, Subcontract Management or HBM voucher controls according to the configured process.",
+      "ledger": "Operational evidence",
+      "confidence": "configuration"
+    },
+    {
+      "step": "Voucher and actual",
+      "business": "Approved supplier cost becomes a liability and a posted project cost.",
+      "jde": "F0411 voucher and F0911 posted detail; AA commonly represents actual amounts.",
+      "ledger": "AA actual",
+      "confidence": "source"
+    },
+    {
+      "step": "WIP / inventory",
+      "business": "Qualifying land, development and home cost remains on the balance sheet before sale.",
+      "jde": "Job Cost and General Accounting retain the cost by governed business unit and account structure.",
+      "ledger": "Accounting policy",
+      "confidence": "configuration"
+    },
+    {
+      "step": "Close and cost of sales",
+      "business": "At the approved close, accumulated basis is relieved and recognized with the sale.",
+      "jde": "The closing process posts the approved financial result; exact templates and object IDs remain release/configuration dependent.",
+      "ledger": "AA posting",
+      "confidence": "configuration"
+    }
+  ],
+  "finalAssessment": [
+    {
+      "question": "An executed land option exists, but the deed has not transferred. What does the builder have?",
+      "options": ["Recorded ownership", "Contractual site control", "A finished lot"],
+      "answer": 1,
+      "topic": "Land control versus ownership"
+    },
+    {
+      "question": "Which record should prove detailed line-level purchase commitment activity?",
+      "options": ["The CRM opportunity", "The commitment audit/procurement detail", "The warranty case"],
+      "answer": 1,
+      "topic": "Commitment traceability"
+    },
+    {
+      "question": "What is the key difference between a bid and a takeoff?",
+      "options": ["Bid selects price/supplier; takeoff accumulates quantity", "Bid is revenue; takeoff is cash", "They are interchangeable"],
+      "answer": 0,
+      "topic": "Product and cost rules"
+    },
+    {
+      "question": "When does CRM interest become an authoritative lot reservation?",
+      "options": ["When a salesperson opens an opportunity", "When the governed lot process accepts the hold", "When construction starts"],
+      "answer": 1,
+      "topic": "Salesforce–JDE authority"
+    },
+    {
+      "question": "What should happen to a Supplier TBD line before commitment generation?",
+      "options": ["Ignore it", "Assign an approved supplier or hold it with an owner and reason", "Voucher it"],
+      "answer": 1,
+      "topic": "Lot Start exception control"
+    },
+    {
+      "question": "Which event turns approved supplier cost into a posted liability and actual cost?",
+      "options": ["Creating a marketing lead", "Approved voucher/posting", "Option selection"],
+      "answer": 1,
+      "topic": "Money flow"
+    },
+    {
+      "question": "Which platform should remain authoritative for legal funding and title-transfer evidence?",
+      "options": ["Title/escrow platform", "Field scheduling", "Takeoff master"],
+      "answer": 0,
+      "topic": "Closing boundaries"
+    },
+    {
+      "question": "Why is a confidence tag shown beside a JDE reference?",
+      "options": ["To replace testing", "To show whether the reference is source-backed, configuration-dependent or still needs validation", "To rank users"],
+      "answer": 1,
+      "topic": "Reference governance"
+    }
+  ]
+}

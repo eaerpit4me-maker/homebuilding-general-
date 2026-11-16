@@ -18,6 +18,10 @@ Live learning site: https://homebuilding-process-jde-learning.dharmendra-malviya
 - Salesforce–JDE request/response contract and field-scheduling integration patterns
 - Stage 4 reservation sequence, contract price stack and configuration-freeze controls
 - Workfile exception, voucher-path and guided practitioner exercises for every stage
+- Role-based learning routes for land, sales, purchasing, construction, finance and warranty teams
+- Conceptual budget-to-cost-of-sales money flow with explicitly qualified JA/PA/HA/AA ledger references
+- Per-reference confidence labels: Source-backed, Configuration-dependent and Needs validation
+- Eight-question cumulative assessment with missed-topic guidance
 - Searchable homebuilding glossary
 - Deep links to a stage, lesson view and detail mode
 - Responsive, accessible and dependency-free implementation
@@ -42,8 +46,10 @@ Because the site has no build dependencies, GitHub Pages can serve the repositor
 
 - `index.html` — semantic page structure
 - `styles.css` — responsive learning experience and print design
-- `app.js` — stage curriculum, interactions, knowledge checks and glossary
+- `app.js` — rendering, navigation, assessment and interaction logic
+- `data/content.json` — curriculum, JDE references, reports, role paths, exercises and confidence rules
+- `dist/` — deployment-ready copy of the same source and curriculum data
 
 ## Content boundary
 
-This is conceptual educational guidance. Validate the actual homebuilder process, installed EnterpriseOne release, ESUs, licensed modules, configuration, customizations, security and accounting policy before using it for implementation decisions.
+This is conceptual educational guidance. References tagged **Needs validation** remain intentionally unresolved until they are confirmed against the demo environment or authoritative documentation. Validate the actual homebuilder process, installed EnterpriseOne release, ESUs, licensed modules, configuration, customizations, security and accounting policy before using it for implementation decisions.
