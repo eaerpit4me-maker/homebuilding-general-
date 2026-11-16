@@ -1,0 +1,285 @@
+const stages = [
+  {
+    slug: "land-opportunity", short: "Find land", phase: "Portfolio decision",
+    title: "Find and control the land", question: "Where could we build—and should we pursue it?",
+    summary: "The land team identifies a parcel or finished-lot opportunity, secures a form of site control, tests feasibility and obtains authority to close, retain control or walk away.",
+    outcome: "The company has documented ownership or contractual control, an approved investment case, known conditions and an accountable Development owner.",
+    input: "Seller or broker lead, parcel reference and market idea", output: "Approved, owned or controlled land opportunity", consumer: "Land Development",
+    story: "Willow Creek begins as a Salesforce land opportunity linked to GIS parcels. The team negotiates an option, investigates title, utilities, environmental conditions and market demand, and updates an underwriting model. An investment committee approves the structure and conditions. Title may transfer now, later at option exercise, or by phased takedown—so commercial control, legal ownership and accounting treatment are tracked separately.",
+    steps: [
+      ["Create the opportunity", "Identify the seller, broker, parcel, geography, asking terms and initial strategy."],
+      ["Secure site control", "Execute an option, purchase agreement, takedown, JV or land-bank agreement with clear dates and conditions."],
+      ["Complete diligence", "Evaluate title, survey, environmental, geotechnical, entitlement, utilities, market and delivery risk."],
+      ["Approve and activate", "Approve the investment and accounting conclusion, complete settlement when applicable, establish JDE controls and hand off the baseline."]
+    ],
+    decisions: ["Pursue, renegotiate or walk away", "Buy now, option, takedown, JV or land-bank structure", "Which conditions must remain open after approval?"],
+    pitfalls: ["Treating an option as if title already transferred", "Creating JDE lots before a recorded plat or accepted finished-lot purchase", "Allowing the approved underwriting version and JDE budget to diverge"],
+    roles: [["Land acquisition", "Owns the opportunity, negotiation and decision package."], ["Legal / title", "Confirms rights, exceptions, settlement and recorded ownership."], ["Finance", "Approves funding, classification, capitalization and project activation."], ["Development", "Accepts the baseline, conditions and next-stage accountability."]],
+    handoffs: [["Salesforce / GIS", "Diligence team", "Deal, parcel, parties, control strategy and dates"], ["Approval workflow", "Title / JDE", "Approved structure, model version, legal entity, limits and conditions"], ["Title / registry", "JDE + Salesforce", "Settlement, funding, deed/recording status and legal owner"], ["Acquisition", "Land Development", "Controlled/owned land, baseline budget, open conditions and evidence"]],
+    jdeIntro: "JDE records the approved commercial and financial consequences. It is not the parcel, title, diligence or early-stage underwriting system.",
+    jdeModules: [["external", "Salesforce + GIS", "Own the land opportunity, activities and spatial evidence."], ["adjacent", "Address Book + Financials", "Create transaction-ready parties and record approved deposits, obligations, payments and cost basis."], ["adjacent", "Job Cost", "Establish the approved business unit, accounts, budget and actual-cost structure."], ["primary", "HBM boundary", "Create authorized community context when appropriate; defer individual home sites until lots exist."]],
+    artifacts: ["F0101", "F0006", "F0901", "F0902", "F0911", "P44H101 / F44H101", "Orchestrator / AIS"],
+    quiz: { question: "Willow Creek is under an executed land option, but the deed has not transferred. Which statement is most accurate?", options: ["The builder legally owns the land", "The builder controls a contractual right, while recorded ownership remains with the current owner", "JDE must create all future home-site records immediately"], answer: 1, explanation: "An option can provide contractual control without transferring recorded title. Accounting recognition and operational readiness are separate decisions." },
+    record: ["Land opportunity", "Deal ID, Parcel ID, control agreement, approved model and conditions"]
+  },
+  {
+    slug: "land-development", short: "Develop land", phase: "Horizontal delivery",
+    title: "Entitle and develop the community", question: "How does raw land become serviced, buildable lots?",
+    summary: "The Development team secures approvals and installs horizontal infrastructure—earthwork, roads, water, sewer, power, drainage, landscaping and common facilities—while controlling contracts and cost.",
+    outcome: "The relevant phase is legally recorded, physically serviced, accepted where required and ready to release governed lots.",
+    input: "Owned or controlled land, approved baseline and open conditions", output: "Recorded, serviced and financially controlled phase", consumer: "Community and Lot Setup",
+    story: "Willow Creek moves from an investment decision to a delivery program. Civil engineers design the subdivision, municipalities review it, and suppliers perform horizontal work. Development managers need one view of original budget, approved changes, commitments, certified progress, actual cost and remaining forecast. Shared phase cost will later become part of each lot's cost basis.",
+    steps: [["Design and entitle", "Complete civil design, permits, agreements, subdivision/plat approval and utility coordination."], ["Contract the work", "Tender and award horizontal scopes using approved suppliers, cost codes and commercial terms."], ["Execute and certify", "Track field progress, inspections, change orders, retainage, invoices and municipal acceptance."], ["Complete and allocate", "Close the eligible cost pool and allocate approved acquisition/development basis to released lots."]],
+    decisions: ["Which phase is released and when?", "What work is capitalizable under policy?", "Which allocation driver fairly moves shared cost to lots?"],
+    pitfalls: ["Managing commitments only in spreadsheets", "Paying progress without certification or change approval", "Releasing lots while mandatory service or permit conditions remain open"],
+    roles: [["Land Development", "Owns scope, schedule, budget and field delivery."], ["Civil / permitting", "Owns designs, submissions, inspections and acceptance evidence."], ["Procurement / AP", "Controls contracts, progress, retainage, vouchers and payment."], ["Finance / project controls", "Reviews cost-to-complete, WIP and lot allocation."]],
+    handoffs: [["Engineering", "Procurement", "Approved scope, drawings, cost code, schedule and bidder list"], ["Field / certifier", "JDE", "Approved progress, quantity, change, retainage and invoice evidence"], ["JDE", "Project controls", "Budget, commitment, actual, payment and forecast facts"], ["Development", "Lot Setup", "Recorded lots, service status, allocated cost and release conditions"]],
+    jdeIntro: "JDE becomes the commercial and cost-control backbone. Civil design, permitting and detailed field collaboration generally remain in specialist platforms.",
+    jdeModules: [["adjacent", "Job Cost", "Controls the WBS, budgets, actuals, balances and cost-to-complete basis."], ["adjacent", "Procurement / Subcontracts", "Controls horizontal commitments, commercial changes and progress."], ["adjacent", "AP + General Accounting", "Posts certified cost, retainage, liabilities, payments and allocation entries."], ["external", "Civil / field / permitting", "Owns drawings, schedules, inspection evidence and municipal workflow."]],
+    artifacts: ["F0006", "F0901", "F0902", "F0911", "F4301 / F4311", "F43199", "F0411", "P4310 patterns"],
+    quiz: { question: "A road subcontract is approved but no work has been certified or invoiced. What exists financially?", options: ["A supplier commitment, but normally no AP liability yet", "A posted cash payment", "Recognized home-sale revenue"], answer: 0, explanation: "The subcontract creates a commitment. Actual cost and AP arise from approved progress, receipt, accrual or voucher processing." },
+    record: ["Community / phase", "Development job, recorded plan, services, acceptance and cost pool"]
+  },
+  {
+    slug: "lot-product", short: "Ready the lot", phase: "Product and inventory",
+    title: "Create the lot and product definition", question: "What can be sold and built on this home site?",
+    summary: "The builder creates a governed home-site record, assigns its financial identity, defines eligible plans and elevations, and establishes current pricing, bids, takeoffs, permits and release conditions.",
+    outcome: "Lot 27 is uniquely identified, financially structured, saleable and/or buildable, with one valid product and cost definition.",
+    input: "Recorded lot, services, allocated basis and release conditions", output: "Governed home site with product, price and cost context", consumer: "Sales and Construction Planning",
+    story: "Lot 27 now becomes more than a line on a subdivision plan. It receives an address, status, lot attributes, a Job Cost identity and allowed home products. Product teams define plan and elevation choices. Estimating teams maintain two complementary cost mechanisms: bids choose the applicable supplier/trade price, while takeoffs accumulate material quantities required by the plan, elevation and options.",
+    steps: [["Create the home site", "Establish community, phase, lot, address, status and durable source cross-references."], ["Assign product rules", "Define eligible plans, elevations, swings, specifications and option restrictions."], ["Define cost", "Maintain effective bids, supplier assignments and cumulative takeoff quantities."], ["Pass the readiness gate", "Confirm legal, service, permit, product, price, cost and release requirements."]],
+    decisions: ["Is the lot saleable, buildable or both?", "Which plans and elevations are permitted?", "Which bid/takeoff version is effective for the intended start?"],
+    pitfalls: ["Duplicate lot or business-unit identifiers", "Overlapping effective dates", "Confusing a bid price with a takeoff quantity"],
+    roles: [["Community operations", "Owns lot readiness, status and release dates."], ["Product / design", "Owns plans, elevations, specifications and restrictions."], ["Estimating / purchasing", "Owns bids, takeoffs, suppliers and effective cost rules."], ["Finance", "Owns allocated land basis and the lot/job accounting structure."]],
+    handoffs: [["Development", "HBM", "Recorded lot, address, service status, allocation and gate conditions"], ["Product", "HBM", "Plan/elevation eligibility, specification and option rules"], ["Estimating", "HBM", "Bid, takeoff, supplier and effective dates"], ["HBM", "Sales / scheduling", "Saleable/buildable status, product eligibility and governed lot ID"]],
+    jdeIntro: "This is where Homebuilder Management becomes the lifecycle anchor for the individual home site and connects it to Job Cost, product and future sales/start activity.",
+    jdeModules: [["primary", "HBM Home Site", "Owns the community/phase/lot context, status, address and product eligibility."], ["primary", "HBM bids and takeoffs", "Provides applicable supplier/trade cost and accumulated material requirements."], ["adjacent", "Job Cost", "Carries the lot business unit, accounts, budget and allocated developed-land basis."], ["external", "Planning / CRM / documents", "Owns release strategy, customer-facing inventory and detailed design content."]],
+    artifacts: ["P44H201 / F44H201", "F0006", "F5108", "F0901", "F44H301", "F44H401", "F44H601 / F44H611", "F44H602 / F44H603 / F44H604"],
+    quiz: { question: "What is the simplest difference between a bid and a takeoff?", options: ["A bid selects price/supplier logic; a takeoff accumulates required quantities", "A bid is for buyers; a takeoff is for title companies", "They are two names for the same record"], answer: 0, explanation: "Bids resolve the applicable trade or supplier price. Takeoffs accumulate material and assembly quantities for the configured home." },
+    record: ["Home site / Lot 27", "Address, lot status, job, eligible product, cost basis and release gates"]
+  },
+  {
+    slug: "sell-configure", short: "Sell & configure", phase: "Buyer commitment",
+    title: "Sell and configure the home", question: "Who is buying, what are they buying, and on what terms?",
+    summary: "Sales qualifies the buyer, validates available inventory, controls reservations, executes the purchase agreement and captures the approved plan, elevation, options, premiums, incentives, deposits and dates.",
+    outcome: "The builder has a governed buyer—or an approved spec-home decision—and one revision-controlled home configuration for downstream planning.",
+    input: "Saleable lot, eligible product, price and customer interest", output: "Executed contract or approved spec configuration", consumer: "Lot Start and Construction Planning",
+    story: "A buyer discovers Willow Creek in Salesforce and selects Lot 27. Salesforce owns the lead, activities and customer journey, but JDE HBM confirms that the lot can be reserved and holds the accepted ERP sale context. The signed agreement stays in the document/e-signature platform. Deposit receipts are controlled financially. Structural options freeze earlier than cosmetic choices, so every downstream team needs the same configuration version.",
+    steps: [["Qualify and match", "Connect buyer needs to available communities, lots, plans and price ranges."], ["Validate and reserve", "Ask the authoritative lot record to accept a time-bound hold; do not rely on CRM availability alone."], ["Contract and collect", "Execute the agreement, capture approved economics and process deposits under policy."], ["Configure and freeze", "Capture selected options and enforce structural, design-center and cosmetic cutoff dates."]],
+    decisions: ["Buyer sale or spec start?", "Is the lot truly available and eligible?", "Which changes remain allowed after each cutoff?"],
+    pitfalls: ["Two buyers promised the same lot", "CRM price differs from the approved contract", "Stale option revisions flow into construction purchasing"],
+    roles: [["Sales", "Owns the relationship, opportunity and buyer journey."], ["Sales operations", "Owns reservation, contract version, incentives and configuration control."], ["Design center", "Owns buyer selection experience and cutoff workflow."], ["Finance", "Controls deposits, customer identity and approved economic consequences."]],
+    handoffs: [["Salesforce", "JDE HBM", "Buyer reference, lot request, hold, contract version, price and options"], ["JDE HBM", "Salesforce", "Accepted availability, reservation, ERP sale reference and milestones"], ["Payment / escrow", "JDE", "Deposit amount, payer, date, tender and external reference"], ["Sales / design", "Lot Start", "Frozen configuration, selected options, effective dates and approved exceptions"]],
+    jdeIntro: "Salesforce is normally the engagement system. HBM governs the accepted home-site sale context and configuration used by downstream JDE processing.",
+    jdeModules: [["external", "Salesforce / digital sales", "Owns lead, opportunity, activities, communications and customer experience."], ["primary", "HBM Sales Workbench", "Connects buyer, lot, plan, options, premiums, incentives and operational sale status."], ["adjacent", "Address Book / AR", "Creates transaction-ready buyer identity and controls approved receipts/deposit balances."], ["external", "E-signature / design center", "Retains signed documents and the interactive selection experience."]],
+    artifacts: ["P44H500", "P44H501", "F44H501", "F0101", "F03B11", "Orchestrator / AIS", "CRM Opportunity ID"],
+    quiz: { question: "Salesforce shows Lot 27 as available, but JDE HBM rejects the reservation. Which status should govern the accepted hold?", options: ["Salesforce, because the salesperson sees it first", "JDE HBM, because it owns the accepted lot reservation/status", "Whichever screen was refreshed most recently"], answer: 1, explanation: "Salesforce presents inventory and coordinates engagement, but the governed JDE/HBM response should determine whether the hold is accepted." },
+    record: ["Configuration and sale", "Buyer/spec decision, plan, options, price, deposits, version and cutoffs"]
+  },
+  {
+    slug: "build-home", short: "Start & build", phase: "Vertical execution",
+    title: "Start and build the home", question: "How does an approved configuration become coordinated field work?",
+    summary: "Lot Start converts the home definition into lot-specific budget and purchasing records. Construction then sequences trades, manages changes and inspections, and accumulates actual cost against the approved plan.",
+    outcome: "Lot 27 is complete, inspected, financially reconciled and ready for the controlled closing process.",
+    input: "Authorized lot, frozen configuration, effective bids/takeoffs and permits", output: "Completed home with reconciled cost and open-item list", consumer: "Closing Team",
+    story: "For Lot 27, the Lot Start engine evaluates the plan, elevation and options against effective bids and cumulative takeoffs. Teams review exceptions such as Supplier TBD before purchase orders and subcontracts are generated. The field platform sequences trades and returns approved completion, change and exception evidence. JDE remains the commercial and financial record while the field platform owns the detailed schedule and site collaboration.",
+    steps: [["Authorize the start", "Confirm permits, configuration freeze, current cost rules, supplier readiness and start authority."], ["Generate and review", "Run Lot Start in proof/final mode, inspect workfile lines and resolve missing suppliers or invalid quantities."], ["Create commitments", "Generate controlled purchase orders/subcontracts and expose released work to the field."], ["Execute and account", "Capture completion, inspections, changes, receipts, vouchers, payments, actual cost and forecast."]],
+    decisions: ["Is every mandatory start gate complete?", "Are exceptions safe to release?", "Is a change buyer-driven, field-driven, design correction or trade back-charge?"],
+    pitfalls: ["Generating commitments from an unfrozen configuration", "Duplicate Lot Start runs", "Posting from an unapproved field event"],
+    roles: [["Start coordinator", "Validates configuration, workfile and supplier exceptions."], ["Construction", "Owns schedule, quality, inspections and field decisions."], ["Purchasing", "Owns commitments, supplier scope, change and commercial control."], ["AP / Finance", "Owns vouchers, payment, WIP, reconciliation and cost forecast."]],
+    handoffs: [["HBM Lot Start", "JDE Procurement", "Lot/job, scope, quantity, cost, supplier and dates"], ["JDE", "Field platform", "Released work package, supplier, schedule need and change status"], ["Field platform", "JDE", "Approved completion, receipt, exception, change and invoice evidence"], ["Construction", "Closing", "Completion, inspections, occupancy readiness, cost status and open items"]],
+    jdeIntro: "This is the most distinctive HBM process: configuration and cost rules become lot-specific workfile lines, budgets and supplier commitments.",
+    jdeModules: [["primary", "HBM Lot Start", "Resolves the configuration against bids/takeoffs and creates reviewed lot-specific workfile lines."], ["adjacent", "Procurement / Subcontracts", "Creates and controls supplier commitments, changes, receipts and commercial status."], ["adjacent", "Job Cost / AP / GL", "Compares budget, commitments and actuals and posts lot-level construction WIP."], ["external", "Field scheduling", "Owns detailed trade sequence, mobile collaboration, inspections and photos."]],
+    artifacts: ["R44H700", "F44H71W1 proof", "F44H711 final", "P44H711", "R44H7113", "F4301 / F4311", "F43199 detail", "F0902 summary", "F0411", "F0911"],
+    quiz: { question: "What does commitment generation normally create before a supplier invoice exists?", options: ["A purchase order/subcontract and commitment visibility", "A home-sale closing journal", "A warranty claim"], answer: 0, explanation: "Commitment generation creates procurement documents and commitment visibility. AP and actual cost arise later through approved execution and vouchering." },
+    record: ["Active home / construction job", "Workfile, budget, commitments, field milestones, actuals and forecast"]
+  },
+  {
+    slug: "close-transfer", short: "Close & transfer", phase: "Settlement and ownership",
+    title: "Close, transfer and recognize", question: "How does a completed home become a legally transferred, financially closed sale?",
+    summary: "The closing team reconciles the buyer agreement, deposits, lender/title conditions and final settlement statement, confirms legal transfer and funding, then posts the approved revenue, cost and cash consequences.",
+    outcome: "Title has transferred to the buyer, proceeds and deposits reconcile, revenue and cost are posted, and the homeowner/warranty handoff is complete.",
+    input: "Completed home, buyer contract, deposits and approved settlement package", output: "Legally transferred and financially posted home", consumer: "Warranty / Customer Care",
+    story: "Lot 27 is physically ready, but the sale is not complete until legal and financial conditions converge. The title/escrow platform manages the legal closing workflow and statement. Salesforce coordinates customer communications. JDE controls approved receipts and posting. The closing process must reconcile the executed contract, earnest-money deposits, settlement statement, funding, title-transfer evidence and the final inventory/WIP relief.",
+    steps: [["Prepare to close", "Confirm inspections/occupancy, lender and title conditions, homeowner walkthrough and final price."], ["Balance settlement", "Reconcile deposits, proceeds, taxes, commissions, concessions, adjustments and disbursements."], ["Fund and transfer", "Confirm escrow funding, signatures, legal transfer/recording and key release."], ["Post and hand off", "Apply deposits, post revenue and cost of sales, close the operational record and activate warranty."]],
+    decisions: ["Are all legal and operational prerequisites complete?", "Does the approved settlement balance to contract and deposits?", "Has legal transfer actually occurred?"],
+    pitfalls: ["Posting from a draft settlement statement", "Deposits do not reconcile to the buyer contract", "Warranty begins without a governed closed-home snapshot"],
+    roles: [["Closing / title / escrow", "Owns legal workflow, statement, funding and transfer evidence."], ["Salesforce / customer team", "Owns communication, appointments and buyer-facing readiness."], ["Finance", "Owns receipts, balanced journals, revenue, COGS and cash reconciliation."], ["Warranty", "Accepts the homeowner, home configuration, dates and open items."]],
+    handoffs: [["JDE HBM", "Title / escrow", "Sale reference, legal parties, address, price, deposits and prerequisites"], ["Title / escrow", "JDE", "Approved statement version, funds, disbursements, adjustments and transfer proof"], ["JDE", "Salesforce", "Posted close, final status and customer-lifecycle milestone"], ["JDE / HBM", "Warranty", "Closed home, owner, configuration, close date and open items"]],
+    jdeIntro: "Specialist platforms coordinate legal settlement; JDE retains the posted financial result and the auditable link back to the home and buyer.",
+    jdeModules: [["primary", "HBM sale / closing context", "Connects the home, buyer, contract economics and operational close status."], ["adjacent", "AR + General Accounting", "Applies deposits/proceeds and posts approved revenue, cost of sales and cash consequences."], ["adjacent", "Job Cost", "Provides accumulated home cost and supports WIP/inventory-to-cost-of-sales reconciliation."], ["external", "Title / escrow + Salesforce", "Owns legal workflow, funding coordination and buyer engagement."]],
+    artifacts: ["P44H500 patterns", "F44H501", "F03B11", "F0911", "F0902", "Settlement version", "Exactly-once close event"],
+    quiz: { question: "Who should own the final posted revenue and cost-of-sales facts?", options: ["The title portal", "Salesforce", "JDE Financials"], answer: 2, explanation: "Title/escrow owns legal settlement workflow and Salesforce owns engagement, but JDE Financials owns posted accounting facts." },
+    record: ["Closed home", "Legal owner, close date, posted sale, relieved cost basis and warranty start"]
+  },
+  {
+    slug: "warranty", short: "Support owner", phase: "Post-close service",
+    title: "Support the homeowner and learn", question: "How does the builder resolve defects and improve the next home?",
+    summary: "Customer Care receives requests, checks coverage, diagnoses the issue, dispatches internal or trade work, tracks completion and cost, and feeds root-cause learning back to product, quality and purchasing.",
+    outcome: "The claim is resolved, the homeowner is informed, cost/recovery is recorded and reusable defect learning is captured.",
+    input: "Closed-home snapshot, coverage terms and homeowner request", output: "Resolved claim, cost, recovery and quality feedback", consumer: "Product / Estimating / Quality",
+    story: "After move-in, the Lot 27 homeowner reports a window leak. The warranty platform links the case to the closed home, configuration and responsible trade. A coverage decision is made by policy and authorized staff—not by AI. The repair may use an internal work order or a supplier purchase order. JDE records approved commercial and financial facts, while the customer platform owns communication and appointments.",
+    steps: [["Receive and classify", "Identify the home, claimant, issue, urgency, evidence and warranty policy version."], ["Decide coverage", "Confirm eligibility, responsibility and the approved repair path."], ["Dispatch and resolve", "Create internal or supplier work, schedule access, capture completion and homeowner acknowledgement."], ["Account and learn", "Record repair cost/recovery and standardize defect, cause, remedy, product and trade feedback."]],
+    decisions: ["Is the issue covered?", "Internal repair, supplier callback or paid external work?", "Is a back-charge or recovery supportable?"],
+    pitfalls: ["No connection to the original home configuration", "Repair cost is posted without a case/work reference", "Free-text defects cannot be analyzed across communities"],
+    roles: [["Customer Care", "Owns communication, triage, appointments and closure."], ["Warranty manager", "Owns coverage and responsibility decisions."], ["Trade / technician", "Performs and documents the remedy."], ["Finance / quality", "Records cost/recovery and turns patterns into prevention."]],
+    handoffs: [["Homeowner portal", "Warranty team", "Home, issue, urgency, evidence and preferred contact"], ["Warranty", "JDE / supplier", "Approved work, scope, responsibility, dates and cost authority"], ["JDE", "Warranty", "PO/work/payment and posted-cost status"], ["Warranty analytics", "Product / quality", "Standard defect, cause, remedy, trade and cost pattern"]],
+    jdeIntro: "JDE can support work, procurement, inventory and financial control, but many builders use a specialist warranty platform for the homeowner and field experience.",
+    jdeModules: [["external", "Warranty / CRM service", "Owns cases, coverage workflow, appointments, communication and homeowner experience."], ["adjacent", "Procurement / AP", "Controls approved supplier repair work, invoices, payment and recoveries."], ["adjacent", "Work Orders / Inventory", "Optionally controls internal work and parts where licensed/configured."], ["adjacent", "Financials / Analytics", "Posts warranty cost or provision usage and provides quality feedback facts."]],
+    artifacts: ["Configured Service / Work Order capability", "F4301 / F4311", "F0411", "F0911", "Inventory issue", "Case-to-cost correlation ID"],
+    quiz: { question: "Which platform should normally own the homeowner conversation and appointment experience?", options: ["The warranty/CRM service platform", "The General Ledger", "The lot-start workfile"], answer: 0, explanation: "The warranty or CRM service platform usually owns the engagement experience. JDE retains approved work, procurement, inventory and financial facts." },
+    record: ["Homeowner service history", "Case, coverage, work, cost, recovery, defect cause and remedy"]
+  }
+];
+
+const glossary = [
+  ["Acquisition", "The process of identifying, controlling, approving and obtaining rights to land or finished lots."],
+  ["Site control", "A contractual right—such as an option or purchase agreement—that may exist before legal title transfers."],
+  ["Entitlement", "Government approval that permits a planned land use, density or subdivision."],
+  ["Horizontal development", "Land work such as grading, roads, utilities, drainage and common infrastructure."],
+  ["Vertical construction", "Building the house itself: foundation, framing, MEP, finishes and completion."],
+  ["Community / phase / lot", "The hierarchy that moves from a development, to a delivery phase, to an individual home site."],
+  ["Plan / elevation", "The floor plan and exterior architectural style of a home."],
+  ["Option", "A buyer- or spec-selected feature that changes price, materials, scope or schedule."],
+  ["Bid", "Supplier/trade pricing logic used to determine who should perform work and at what agreed cost."],
+  ["Takeoff", "The accumulated quantity of materials or assemblies needed for a configured home."],
+  ["Lot Start", "The HBM process that converts a home configuration and cost rules into lot-specific workfile lines and commitments."],
+  ["Commitment", "Authorized supplier spend, normally represented by a purchase order or subcontract before an invoice becomes AP."],
+  ["WIP", "Work in process: qualifying accumulated cost held before the home is closed or otherwise recognized under policy."],
+  ["Cost of sales", "The accumulated land, development and construction cost relieved when the home sale is recognized."],
+  ["Escrow", "A controlled closing arrangement that holds and disburses funds/documents when agreed conditions are satisfied."],
+  ["Back-charge", "An approved recovery or offset against a responsible supplier for damage, rework or another contractual obligation."],
+  ["System of record", "The application authorized to own a specific business fact—not necessarily every screen where that fact appears."],
+  ["Orchestrator / AIS", "JDE integration capabilities that expose validated business actions and data without making an external system the ERP ledger."]
+];
+
+let currentStage = 0;
+let currentTab = "understand";
+let currentMode = "beginner";
+let completed = new Set();
+try { completed = new Set(JSON.parse(localStorage.getItem("homebuildingLearningCompleted") || "[]")); } catch { completed = new Set(); }
+
+const stageRail = document.getElementById("stageRail");
+const panel = document.getElementById("lessonPanel");
+const tabButtons = [...document.querySelectorAll("[data-tab]")];
+const modeButtons = [...document.querySelectorAll("[data-mode]")];
+
+function updateUrl() {
+  const url = new URL(location.href);
+  url.searchParams.set("stage", stages[currentStage].slug);
+  url.searchParams.set("lesson", currentTab);
+  url.searchParams.set("mode", currentMode);
+  history.replaceState(null, "", url);
+}
+
+function renderStageRail() {
+  stageRail.innerHTML = stages.map((stage, index) => `<button class="stage-button" type="button" data-stage="${index}" aria-current="${index === currentStage ? "step" : "false"}"><span>${completed.has(index) ? "✓" : String(index + 1).padStart(2,"0")}</span><strong>${stage.short}</strong><small>${stage.phase}</small></button>`).join("");
+}
+
+function understandView(stage) {
+  return `<div class="learn-grid">
+    <article class="story-card"><h4>The Willow Creek story</h4><p>${stage.story}</p><div class="process-steps">${stage.steps.map((step,index) => `<div class="process-step"><span>${index+1}</span><div><strong>${step[0]}</strong><p>${step[1]}</p></div></div>`).join("")}</div></article>
+    <div class="support-stack">
+      <article class="support-card decision"><h4>Decisions that matter</h4><div class="chip-list">${stage.decisions.map(item => `<span>${item}</span>`).join("")}</div></article>
+      <article class="support-card warning"><h4>Common failure points</h4><div class="chip-list">${stage.pitfalls.map(item => `<span>${item}</span>`).join("")}</div></article>
+    </div>
+  </div>`;
+}
+
+function peopleView(stage) {
+  return `<div class="roles-grid">${stage.roles.map((role,index) => `<article class="role-card"><span>Role ${String(index+1).padStart(2,"0")}</span><h4>${role[0]}</h4><p>${role[1]}</p></article>`).join("")}</div>
+    <div class="handoff-table" role="table" aria-label="Stage information handoffs"><div class="handoff-row handoff-head" role="row"><span role="columnheader">From</span><span role="columnheader">To</span><span role="columnheader">What moves</span></div>${stage.handoffs.map(item => `<div class="handoff-row" role="row"><strong role="rowheader">${item[0]}</strong><span role="cell">${item[1]}</span><span role="cell">${item[2]}</span></div>`).join("")}</div>`;
+}
+
+function jdeView(stage) {
+  return `<div class="jde-intro"><strong>JDE in this stage</strong><p>${stage.jdeIntro}</p></div><div class="jde-module-grid">${stage.jdeModules.map(item => `<article class="jde-module-card ${item[0]}"><span>${item[0] === "primary" ? "JDE HBM" : item[0] === "adjacent" ? "Adjacent JDE" : "Specialist / integration"}</span><h4>${item[1]}</h4><p>${item[2]}</p></article>`).join("")}</div><div class="technical-strip" ${currentMode === "practitioner" ? "" : "hidden"}><strong>Representative JDE references · validate installed release and configuration</strong>${stage.artifacts.map(item => `<code>${item}</code>`).join("")}</div>`;
+}
+
+function checkView(stage) {
+  return `<article class="check-card"><span class="stage-index">Stage ${currentStage+1} knowledge check</span><h4>${stage.quiz.question}</h4><p>Choose the strongest answer. The explanation connects the business rule to the system boundary.</p><div class="answer-list">${stage.quiz.options.map((option,index) => `<button type="button" data-answer="${index}">${String.fromCharCode(65+index)}. ${option}</button>`).join("")}</div><div class="answer-feedback" id="answerFeedback" hidden aria-live="polite"></div></article>`;
+}
+
+function renderPanel() {
+  const stage = stages[currentStage];
+  const views = {understand: understandView, people: peopleView, jde: jdeView, check: checkView};
+  panel.innerHTML = views[currentTab](stage);
+}
+
+function renderRecordJourney() {
+  document.getElementById("recordJourney").innerHTML = stages.map((stage,index) => `<div class="record-node ${index === currentStage ? "active" : ""}"><span>${String(index+1).padStart(2,"0")} · ${stage.phase}</span><strong>${stage.record[0]}</strong><small>${stage.record[1]}</small></div>`).join("");
+}
+
+function selectStage(index, updateLink = true) {
+  currentStage = Math.max(0, Math.min(stages.length-1,index));
+  const stage = stages[currentStage];
+  document.getElementById("stageIndex").textContent = `Stage ${currentStage+1} of ${stages.length}`;
+  document.getElementById("stageQuestion").textContent = stage.question;
+  document.getElementById("stageTitle").textContent = stage.title;
+  document.getElementById("stageSummary").textContent = stage.summary;
+  document.getElementById("stageOutcome").textContent = stage.outcome;
+  document.getElementById("stageInput").textContent = stage.input;
+  document.getElementById("stageOutput").textContent = stage.output;
+  document.getElementById("stageConsumer").textContent = stage.consumer;
+  document.getElementById("progressText").textContent = `${currentStage+1} of ${stages.length}`;
+  document.getElementById("progressBar").style.width = `${((currentStage+1)/stages.length)*100}%`;
+  document.getElementById("prevStage").disabled = currentStage === 0;
+  document.getElementById("nextStage").disabled = currentStage === stages.length-1;
+  renderStageRail(); renderPanel(); renderRecordJourney();
+  if (updateLink) updateUrl();
+}
+
+function activateTab(tab, updateLink = true) {
+  if (!["understand","people","jde","check"].includes(tab)) return;
+  currentTab = tab;
+  tabButtons.forEach(button => { const selected = button.dataset.tab === tab; button.setAttribute("aria-selected", String(selected)); button.tabIndex = selected ? 0 : -1; });
+  renderPanel();
+  if (updateLink) updateUrl();
+}
+
+function setMode(mode) {
+  if (!["beginner","practitioner"].includes(mode)) return;
+  currentMode = mode;
+  modeButtons.forEach(button => button.setAttribute("aria-pressed", String(button.dataset.mode === mode)));
+  renderPanel(); updateUrl();
+}
+
+stageRail.addEventListener("click", event => { const button = event.target.closest("[data-stage]"); if (button) selectStage(Number(button.dataset.stage)); });
+tabButtons.forEach((button,index) => {
+  button.addEventListener("click", () => activateTab(button.dataset.tab));
+  button.addEventListener("keydown", event => { if (!["ArrowRight","ArrowLeft","Home","End"].includes(event.key)) return; event.preventDefault(); let next=index; if(event.key==="ArrowRight") next=(index+1)%tabButtons.length; if(event.key==="ArrowLeft") next=(index-1+tabButtons.length)%tabButtons.length; if(event.key==="Home") next=0; if(event.key==="End") next=tabButtons.length-1; activateTab(tabButtons[next].dataset.tab); tabButtons[next].focus(); });
+});
+modeButtons.forEach(button => button.addEventListener("click", () => setMode(button.dataset.mode)));
+document.getElementById("prevStage").addEventListener("click", () => selectStage(currentStage-1));
+document.getElementById("nextStage").addEventListener("click", () => selectStage(currentStage+1));
+panel.addEventListener("click", event => {
+  const answer = event.target.closest("[data-answer]");
+  if (!answer) return;
+  const selected = Number(answer.dataset.answer);
+  const quiz = stages[currentStage].quiz;
+  panel.querySelectorAll("[data-answer]").forEach(button => { button.disabled = true; if (Number(button.dataset.answer) === quiz.answer) button.classList.add("correct"); });
+  if (selected !== quiz.answer) answer.classList.add("incorrect");
+  const feedback = document.getElementById("answerFeedback");
+  feedback.hidden = false;
+  feedback.innerHTML = `<strong>${selected === quiz.answer ? "Correct." : "Not quite."}</strong> ${quiz.explanation}`;
+  if (selected === quiz.answer) { completed.add(currentStage); try { localStorage.setItem("homebuildingLearningCompleted", JSON.stringify([...completed])); } catch {} renderStageRail(); }
+});
+
+function renderGlossary(query="") {
+  const normalized=query.trim().toLowerCase();
+  const matches=glossary.filter(item => !normalized || `${item[0]} ${item[1]}`.toLowerCase().includes(normalized));
+  document.getElementById("glossaryGrid").innerHTML = matches.map(item => `<article class="glossary-item"><strong>${item[0]}</strong><span>${item[1]}</span></article>`).join("");
+  document.getElementById("glossaryEmpty").hidden = matches.length > 0;
+}
+document.getElementById("glossarySearch").addEventListener("input", event => renderGlossary(event.target.value));
+
+const initial = new URL(location.href);
+const stageIndex = stages.findIndex(stage => stage.slug === initial.searchParams.get("stage"));
+const requestedTab = initial.searchParams.get("lesson");
+const requestedMode = initial.searchParams.get("mode");
+currentStage = stageIndex >= 0 ? stageIndex : 0;
+currentTab = ["understand","people","jde","check"].includes(requestedTab) ? requestedTab : "understand";
+currentMode = ["beginner","practitioner"].includes(requestedMode) ? requestedMode : "beginner";
+tabButtons.forEach(button => { const selected = button.dataset.tab === currentTab; button.setAttribute("aria-selected", String(selected)); button.tabIndex = selected ? 0 : -1; });
+modeButtons.forEach(button => button.setAttribute("aria-pressed", String(button.dataset.mode === currentMode)));
+selectStage(currentStage, false);
+renderGlossary();
