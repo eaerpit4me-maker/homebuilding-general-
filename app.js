@@ -227,6 +227,7 @@ function understandView(stage) {
     <div class="support-stack">
       <article class="support-card decision"><h4>Decisions that matter</h4><div class="chip-list">${stage.decisions.map(item => `<span>${item}</span>`).join("")}</div></article>
       <article class="support-card warning"><h4>Common failure points</h4><div class="chip-list">${stage.pitfalls.map(item => `<span>${item}</span>`).join("")}</div></article>
+      ${currentMode === "practitioner" ? `<article class="support-card jde-glance"><h4>JDE apps &amp; files</h4><p class="jde-glance-intro">Key EnterpriseOne objects and how the business uses them in this stage.</p><div class="jde-glance-list">${stage.jdeReferences.slice(0,3).map(item => `<section class="jde-glance-item"><strong>${item[0]}</strong><div class="jde-object-line"><span>App</span><code>${item[1]}</code></div><div class="jde-object-line"><span>File</span><code>${item[2]}</code></div><p>${item[3]}</p></section>`).join("")}</div><button class="jde-glance-link" type="button" data-open-jde>Open the full stage reference <span aria-hidden="true">→</span></button></article>` : ""}
     </div>
   </div>`;
 }
@@ -297,6 +298,8 @@ modeButtons.forEach(button => button.addEventListener("click", () => setMode(but
 document.getElementById("prevStage").addEventListener("click", () => selectStage(currentStage-1));
 document.getElementById("nextStage").addEventListener("click", () => selectStage(currentStage+1));
 panel.addEventListener("click", event => {
+  const jdeReference = event.target.closest("[data-open-jde]");
+  if (jdeReference) { activateTab("jde"); tabButtons.find(button => button.dataset.tab === "jde")?.focus(); return; }
   const answer = event.target.closest("[data-answer]");
   if (!answer) return;
   const selected = Number(answer.dataset.answer);
